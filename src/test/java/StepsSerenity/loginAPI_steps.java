@@ -24,6 +24,7 @@ public class loginAPI_steps {
 	@Step
 	public void post_request_to_endpoint() {
 		response_all = (SerenityRest.given().contentType("application/json").body(loginPOJO_object).when().post(login_page_object.getLogin_endpoint()).then());
+//		System.out.println(response_all.extract().response().body().asString());
 	}
 
 	@Step
