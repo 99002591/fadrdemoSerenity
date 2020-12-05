@@ -1,4 +1,4 @@
-package fadrdemoSerenity.utils;
+package utils;
 
 public class commonMethods {
 

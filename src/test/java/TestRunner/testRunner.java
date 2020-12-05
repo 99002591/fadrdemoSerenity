@@ -1,4 +1,4 @@
-package fadrdemoSerenity.cucumber;
+package TestRunner;
 
 import org.junit.runner.RunWith;
 
@@ -9,8 +9,8 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 
 @CucumberOptions(
-        features = "/fadrdemoSerenity/src/test/resources/features",
-        glue= "/fadrdemoSerenity/src/test/java/com.fadrdemoSerenity.cucumber.StepDefinitions",
+        features = "src/test/resources/features",
+        glue= "StepDefinitions",
         plugin =  "html:target/Report-html",
         monochrome = true )
 public class testRunner {
