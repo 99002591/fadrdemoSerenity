@@ -48,7 +48,7 @@ Feature: Login with UI
   Scenario: Contact EATON support 
      When Contact EATON support representative link is clicked
      Then Help section dialog box opens up
-#  
+  
 #  Scenario Outline: Verify the when remember me check box is checked, email should be autofilled 
 #     When Enter "<email>" and "<password>" 
 #     When Remember Me button is <button> 
