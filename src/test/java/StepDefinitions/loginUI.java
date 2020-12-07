@@ -2,28 +2,32 @@ package StepDefinitions;
 
 import StepsSerenity.loginUI_steps;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 public class loginUI {
-	
-	
+
 	@Steps
 	loginUI_steps loginUI_actions;
-	
+
+	@Given("^Start the required browser$")
+	public void start_the_required_browser() {
+	}
+
 	@When("^Enter \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void enter_the_email_and_password(String email, String password) {
 		System.out.println("Email = " + email + "password = " + password);
 	}
 
-	@When("^Eye button is clicked (.+) $")
-	public void eye_button_is_clicked(String times){
+	@When("^Eye button is clicked (.+)$")
+	public void eye_button_is_clicked(String times) {
 		System.out.println("Eye button is clicked = " + times);
 	}
 
 	@When("^Forgot password link is clicked$")
-	public void forgot_password_link_is_clicked(){
+	public void forgot_password_link_is_clicked() {
 		System.out.println("Forgot password");
 	}
 
@@ -48,7 +52,7 @@ public class loginUI {
 	}
 
 	@Then("^Help section dialog box opens up$")
-	public void help_section_dialog_box_opens_up(){
+	public void help_section_dialog_box_opens_up() {
 		System.out.println("Help section dialog box opens");
 	}
 
