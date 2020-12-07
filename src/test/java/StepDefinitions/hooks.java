@@ -10,9 +10,8 @@ import io.cucumber.java.Before;
 
 public class hooks {
 	
-
 	public static WebDriver driver;
-
+	public static String base_url = "https://fadr-sec-afx-eus-dev.azurewebsites.net/api/v1/";
 	
 	@Before("@BrowserAction")
     public void open_the_chrome_browser() {
