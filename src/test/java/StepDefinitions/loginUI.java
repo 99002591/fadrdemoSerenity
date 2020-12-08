@@ -9,6 +9,8 @@ import net.thucydides.core.annotations.Steps;
 
 public class loginUI {
 
+	hooks hooks_obj = new hooks();
+	
 	@Steps
 	loginUI_steps loginUI_actions;
 
