@@ -8,6 +8,7 @@ import io.restassured.response.ValidatableResponse;
 
 public class custRegAPI {
 	static custRegAPI_steps custRegAPI_steps_object = new custRegAPI_steps();
+	static commonAssertions commonAssertions_object = new commonAssertions();
 	static ValidatableResponse response_all;
 
 	@Given("Login successfully to generate authorisation token")
@@ -23,5 +24,6 @@ public class custRegAPI {
 	@When("^POST request on Customer Registration API$")
 	public void post_request_on_customer_registration_api() {
 		response_all = custRegAPI_steps_object.post_custReg_request();
+		commonAssertions_object.set_response_all(response_all);
 	}
 }

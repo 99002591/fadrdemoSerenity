@@ -9,9 +9,8 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 
 @CucumberOptions(
-        features = "src/test/resources/features/",
+        features = "src/test/resources/features/logout.feature",
         glue= "StepDefinitions",
-        plugin =  "html:target/Report-html",
         monochrome = true )
 public class testRunner {
 }

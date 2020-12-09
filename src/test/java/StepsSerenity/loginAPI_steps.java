@@ -22,11 +22,12 @@ public class loginAPI_steps {
 
 	@Step
 	public ValidatableResponse post_request_to_endpoint() {
-		response_all = (SerenityRest.given().contentType("application/json").body(loginPOJO_object).when().post(hooks_Object.base_url+"security/login").then());
+		response_all = (SerenityRest.given().contentType("application/json").body(loginPOJO_object).when()
+				.post(hooks_Object.base_url + "security/login").then());
 		return response_all;
-		
+
 	}
-	
+
 	@Step
 	public LoginPOJO return_pojo_object() {
 		return loginPOJO_object;
