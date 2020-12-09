@@ -9,7 +9,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 
 @CucumberOptions(
-        features = "src/test/resources/features/logout.feature",
+        features = "src/test/resources/features/",
         glue= "StepDefinitions",
         monochrome = true )
 public class testRunner {

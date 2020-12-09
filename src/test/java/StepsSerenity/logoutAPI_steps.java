@@ -1,11 +1,14 @@
 package StepsSerenity;
 
+import StepDefinitions.hooks;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 
 public class logoutAPI_steps {
-	custRegAPI_steps custRegAPI_steps_object = new custRegAPI_steps();
+	static custRegAPI_steps custRegAPI_steps_object = new custRegAPI_steps();
+	static hooks hooks_object = new hooks();
 	static ValidatableResponse response_all;
 	static String auth, id;
 
@@ -18,10 +21,8 @@ public class logoutAPI_steps {
 
 	@Step
 	public ValidatableResponse delete_request() {
-		response_all = SerenityRest.given().queryParam(id).auth().oauth2(auth).when()
-				.delete("https://fadr-sec-afx-eus-dev.azurewebsites.net/api/v1/security/logoff/").then();
-		System.out.println("Message");
-		System.out.println(response_all.extract().body().asString());
+		response_all = SerenityRest.given().auth().oauth2(auth).when()
+				.delete(hooks_object.base_url +"security/logoff/" + id).then();
 		return response_all;
 	}
 }
