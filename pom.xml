@@ -64,12 +64,20 @@
 
 	</dependencies>
 
+		<properties>
+			<maven.compiler.source>1.8</maven.compiler.source>
+			<maven.compiler.target>1.8</maven.compiler.target>
+		</properties>
+
+
 	<build>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.18</version>
 				<configuration>
+					<goal>TestRunner.testRunner</goal>
 					<includes>
 						<include>**/src/test/resources/features/*.java</include>
 					</includes>

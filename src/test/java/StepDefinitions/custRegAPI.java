@@ -26,4 +26,10 @@ public class custRegAPI {
 		response_all = custRegAPI_steps_object.post_custReg_request();
 		commonAssertions_object.set_response_all(response_all);
 	}
+	
+	 @When("^POST request on Customer Registration API with incorrect authentication of type \"([^\"]*)\"$")
+	    public void post_request_on_customer_registration_api_with_incorrect_authentication(String badauthtype){
+	       response_all = custRegAPI_steps_object.post_bad_custReg_request(badauthtype);
+	       commonAssertions_object.set_response_all(response_all);
+	    }
 }

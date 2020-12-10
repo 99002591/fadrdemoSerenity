@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.restassured.response.ValidatableResponse;
 
+@SuppressWarnings("deprecation")
 public class commonAssertions {
 	static ValidatableResponse response_all;
 	
@@ -14,6 +15,7 @@ public class commonAssertions {
 		this.response_all = response;
 	}
 	
+
 	@Then("^Status code returned is \"([^\"]*)\"$")
 	public void status_code_returned_validation(int statuscode) {
 		assertThat(response_all.extract().statusCode(), equalTo(statuscode));
