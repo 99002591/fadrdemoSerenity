@@ -21,7 +21,7 @@ Feature: API validation for negative test cases in Login
       | Test without password attribute | fadr_support_admin@eaton.com |           | 400         | 1001       | User name or password cannot be null or empty | 
 
       
-     Scenario Outline: Validate Login API Succesfully
+   Scenario Outline: Validate Login API Succesfully
     Given Prepare Request Body for Login API with email = "<email>" and password = "<password>"
      When POST request on Login API
      Then Status code returned is "<status_code>"

@@ -12,6 +12,7 @@ public class logoutAPI_steps {
 	static ValidatableResponse response_all;
 	static String auth, id;
 	static String auth_expired = "sgfwqujgjaslfgsauilfgslaufgsuair934234792305bjxzkvba";
+	String auth_invalid = auth + "ashdsjkfhsk2371249jdfsdfdsfdsfdsfsd3w43rf52353523kcns";
 
 	@Step
 	public void generate_token_and_id() {
@@ -34,7 +35,7 @@ public class logoutAPI_steps {
 					.delete(hooks_object.base_url +"security/logoff/" + id + "invalid_addition").then();
 		}
 		else if(authtype.equals("invalid")) {
-			response_all = SerenityRest.given().auth().oauth2(auth+"invalid").when()
+			response_all = SerenityRest.given().auth().oauth2(auth_invalid).when()
 					.delete(hooks_object.base_url +"security/logoff/" + id).then();
 		}
 		else if(authtype.equals("blank") && useridtype.equals("valid")) {
