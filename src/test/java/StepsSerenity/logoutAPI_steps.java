@@ -33,25 +33,25 @@ public class logoutAPI_steps {
 			response_all = SerenityRest.given().auth().oauth2(auth).when()
 					.delete(hooks_object.base_url +"security/logoff/" + id + "invalid_addition").then();
 		}
-		else if (authtype.equals("valid") && useridtype.equals("blank")) {
-			response_all = SerenityRest.given().auth().oauth2(auth).when()
-					.delete(hooks_object.base_url +"security/logoff/" + "").then();
+		else if(authtype.equals("invalid")) {
+			response_all = SerenityRest.given().auth().oauth2(auth+"invalid").when()
+					.delete(hooks_object.base_url +"security/logoff/" + id).then();
 		}
 		else if(authtype.equals("blank") && useridtype.equals("valid")) {
 			response_all = SerenityRest.given().auth().oauth2("").when()
 					.delete(hooks_object.base_url +"security/logoff/" + id).then();
 		}
-		else if(authtype.equals("blank") && useridtype.equals("blank")) {
-			response_all = SerenityRest.given().auth().oauth2("").when()
-					.delete(hooks_object.base_url +"security/logoff/" + "").then();
-		}
-		else if(authtype.equals("invalid")) {
-			response_all = SerenityRest.given().auth().oauth2(auth+"invalid").when()
-					.delete(hooks_object.base_url +"security/logoff/" + id).then();
-		}
 		else if(authtype.equals("expired")) {
 			response_all = SerenityRest.given().auth().oauth2(auth_expired).when()
 					.delete(hooks_object.base_url +"security/logoff/" + id).then();
+		}
+		else if (authtype.equals("valid") && useridtype.equals("blank")) {
+			response_all = SerenityRest.given().auth().oauth2(auth).when()
+					.delete(hooks_object.base_url +"security/logoff/").then();
+		}
+		else if(authtype.equals("blank") && useridtype.equals("blank")) {
+			response_all = SerenityRest.given().auth().oauth2("").when()
+					.delete(hooks_object.base_url +"security/logoff/").then();
 		}
 		return response_all;
 	}

@@ -4,14 +4,13 @@ import StepDefinitions.hooks;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
-import pages.loginPageObject;
 import pojoClasses.LoginPOJO;
 
 public class loginAPI_steps {
 
 	hooks hooks_Object = new hooks();
 	LoginPOJO loginPOJO_object = new LoginPOJO();
-	static loginPageObject login_page_object = new loginPageObject();
+
 	public static ValidatableResponse response_all;
 
 	@Step

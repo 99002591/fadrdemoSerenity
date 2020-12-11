@@ -13,17 +13,15 @@ import net.thucydides.core.annotations.Steps;
 
 @SuppressWarnings("deprecation")
 public class loginAPI {
-	
-	static commonAssertions commonAssertions_object = new commonAssertions();
-	
+
 	@Steps
 	static loginAPI_steps login_actions;
-	ValidatableResponse response_all;
-	
-	
-	
+
+	static commonAssertions commonAssertions_object = new commonAssertions();
+	static ValidatableResponse response_all;
+
 	@Given("^Prepare Request Body for Login API with email = \"([^\"]*)\" and password = \"([^\"]*)\"$")
-	public void prepare_request_body_for_login_api(String email,String password) {
+	public void prepare_request_body_for_login_api(String email, String password) {
 		login_actions.prepare_request_body(email, password);
 	}
 
