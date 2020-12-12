@@ -30,7 +30,12 @@ public class logoutAPI_steps {
 	
 	@Step
 	public ValidatableResponse delete_request(String authtype, String useridtype) {
-		if(authtype.equals("valid") && useridtype.equals("invalid")) {
+		if(useridtype.equals("blank")) {
+			response_all = SerenityRest.given().auth().oauth2(auth_expired).when()
+			.delete(hooks_object.base_url +"security/logoff/").then();
+			System.out.println(response_all.extract().asString());
+		}
+		else if(authtype.equals("valid") && useridtype.equals("invalid")) {
 			response_all = SerenityRest.given().auth().oauth2(auth).when()
 					.delete(hooks_object.base_url +"security/logoff/" + id + "invalid_addition").then();
 		}
@@ -45,14 +50,6 @@ public class logoutAPI_steps {
 		else if(authtype.equals("expired")) {
 			response_all = SerenityRest.given().auth().oauth2(auth_expired).when()
 					.delete(hooks_object.base_url +"security/logoff/" + id).then();
-		}
-		else if (authtype.equals("valid") && useridtype.equals("blank")) {
-			response_all = SerenityRest.given().auth().oauth2(auth).when()
-					.delete(hooks_object.base_url +"security/logoff/").then();
-		}
-		else if(authtype.equals("blank") && useridtype.equals("blank")) {
-			response_all = SerenityRest.given().auth().oauth2("").when()
-					.delete(hooks_object.base_url +"security/logoff/").then();
 		}
 		return response_all;
 	}
