@@ -25,7 +25,7 @@ Feature: API validation for negative test cases in Login
     Given Prepare Request Body for Login API with email = "<email>" and password = "<password>"
      When POST request on Login API
      Then Status code returned is "<status_code>"
-      And Response body returned  "<message>"
+      And Response body returned "<message>"
     Examples: 
       | Test description            | email                             | password | status_code | message          | 
       | Test with valid credentials | fadr_support_technician@eaton.com | Form7@22 | 200         | Login successful | 

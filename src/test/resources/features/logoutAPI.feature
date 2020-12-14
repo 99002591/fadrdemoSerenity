@@ -5,7 +5,7 @@ Feature: API validation for use of Logout API
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API 
      Then Status code returned is "<status_code>" 
-      And Response body returned  "<message>" 
+      And Response body returned "<message>" 
   
     Examples: 
       | status_code | message            | 
@@ -19,10 +19,10 @@ Feature: API validation for use of Logout API
       And Response body returned is "<error_description>" 
   
     Examples: 
-      | Test Description           | auth_type | user_id_type | status_code | error_code | error_description   | 
-      | Logout with invalid userID | invalid   | valid        | 401         | 9001       | Unauthorized access | 
-      | Logout with blank userID   | invalid   | invalid      | 401         | 9001       | Unauthorized access | 
-      | Logout with valid userID   | invalid   | blank        | 404         |            |                     | 
+      | Test Description           | auth_type | user_id_type | status_code | error_code | error_description       | 
+      | Logout with invalid userID | invalid   | valid        | 401         | 9001       | Unauthorized access     | 
+      | Logout with blank userID   | invalid   | invalid      | 400         | 9010       | Please enter valid GUID | 
+      | Logout with valid userID   | invalid   | blank        | 404         |            |                         | 
   
   Scenario Outline: Validate Logout API Unsuccessfully for Blank Authentication 
     Given Login successfully and generate authorisation token 
@@ -33,8 +33,8 @@ Feature: API validation for use of Logout API
   
     Examples: 
       | Test Description           | auth_type | user_id_type | status_code | error_code | error_description                        | 
-      | Logout with invalid userID | blank     | valid        | 401         | 9009       | Security token must not be null or empty | 
-      | Logout with blank userID   | blank     | invalid      | 401         | 9009       | Security token must not be null or empty | 
+      | Logout with invalid userID | blank     | valid        | 401         | 9001       | Unauthorized access                      | 
+      | Logout with blank userID   | blank     | invalid      | 400         | 9010       | Please enter valid GUID                  | 
       | Logout with valid userID   | blank     | blank        | 404         |            |                                          | 
   
   Scenario Outline: Validate Logout API Unsuccessfully for Expired Authentication 
@@ -45,10 +45,10 @@ Feature: API validation for use of Logout API
       And Response body returned is "<error_description>" 
   
     Examples: 
-      | Test Description           | auth_type | user_id_type | status_code | error_code | error_description   | 
-      | Logout with invalid userID | invalid   | valid        | 401         | 9001       | Unauthorized access | 
-      | Logout with blank userID   | invalid   | invalid      | 401         | 9001       | Unauthorized access | 
-      | Logout with valid userID   | invalid   | blank        | 404         |            |                     | 
+      | Test Description           | auth_type | user_id_type | status_code | error_code | error_description       | 
+      | Logout with invalid userID | expired   | valid        | 401         | 9001       | Unauthorized access     | 
+      | Logout with blank userID   | expired   | invalid      | 400         | 9010       | Please enter valid GUID | 
+      | Logout with valid userID   | expired   | blank        | 404         |            |                         | 
   
   Scenario Outline: Validate Logout API Unsuccessfully for Valid Authentication 
     Given Login successfully and generate authorisation token 
