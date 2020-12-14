@@ -1,14 +1,13 @@
 package StepsSerenity;
 
-import StepDefinitions.hooks;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import pojoClasses.LoginPOJO;
 
 public class loginAPI_steps {
-
-	hooks hooks_Object = new hooks();
+	
+	static String login_endpoint = "security/login";
 	LoginPOJO loginPOJO_object = new LoginPOJO();
 
 	public static ValidatableResponse response_all;
@@ -22,7 +21,8 @@ public class loginAPI_steps {
 	@Step
 	public ValidatableResponse post_request_to_endpoint() {
 		response_all = (SerenityRest.given().contentType("application/json").body(loginPOJO_object).when()
-				.post(hooks_Object.base_url + "security/login").then());
+				.post(login_endpoint).then());
+		System.out.println("SUCCESS");
 		return response_all;
 
 	}

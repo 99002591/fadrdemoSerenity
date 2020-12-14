@@ -1,5 +1,6 @@
 Feature: API validation for negative test cases in Customer Registration API 
 
+@API_SITE
 Scenario Outline: Validate Customer Registration API Unsuccessfully for Invalid Scenarios 
 	Given Login successfully to generate authorisation token 
 	And Prepare the request body with "<name>" "<contactName>" "<phoneNumber>" "<emailId>" "<contactMethod>" "<additionalinfo>" 
@@ -17,7 +18,7 @@ Scenario Outline: Validate Customer Registration API Unsuccessfully for Invalid 
 		| Test with invalid email format    | custname | testcustomer | 123456789   | some            | Others        |                            | 400         | 9007       | Please provide valid email address       | 
 		| Test with blank attribute         |          |              |             |                 |               |                            | 400         | 9008       | Input parameters cannot be null or empty | 
 		
-		
+ @API_SITE		
  Scenario Outline: Validate Customer Registration API Unsuccessfully with Incorrect Authentication
     Given Login successfully to generate authorisation token
       And Prepare the request body with "<name>" "<contactName>" "<phoneNumber>" "<emailId>" "<contactMethod>" "<additionalinfo>"

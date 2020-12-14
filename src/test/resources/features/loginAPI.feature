@@ -2,6 +2,7 @@
 #Sample Feature Definition Template
 Feature: API validation for negative test cases in Login 
 
+	@API_SECURITY
   Scenario Outline: Validate Login API UnSuccessfully for Invalid scenarios
   
     Given Prepare Request Body for Login API with email = "<email>" and password = "<password>"
@@ -20,7 +21,7 @@ Feature: API validation for negative test cases in Login
       | Test without email attribute    |                              | qwert@123 | 400         | 1001       | User name or password cannot be null or empty | 
       | Test without password attribute | fadr_support_admin@eaton.com |           | 400         | 1001       | User name or password cannot be null or empty | 
 
-      
+   @API_SECURITY   
    Scenario Outline: Validate Login API Succesfully
     Given Prepare Request Body for Login API with email = "<email>" and password = "<password>"
      When POST request on Login API

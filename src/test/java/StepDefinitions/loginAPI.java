@@ -1,12 +1,7 @@
 package StepDefinitions;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 import StepsSerenity.loginAPI_steps;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.ValidatableResponse;
 import net.thucydides.core.annotations.Steps;
