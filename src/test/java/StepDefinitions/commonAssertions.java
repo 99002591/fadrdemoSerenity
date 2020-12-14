@@ -44,9 +44,9 @@ public class commonAssertions {
 		assertThat(response_all.extract().jsonPath().getString("errorDescription"), equalTo(errordescription));
 		return true;
 	}
-
-	 @And("^Response body returned \"([^\"]*)\" $")
-	    public void response_body_returned_something(String message){
-		 assertThat(response_all.extract().jsonPath().getString("message"), equalTo(message));
-	    }
+	
+	@And("^Response message returned \"([^\"]*)\"$")
+    public void response_message_returned_something(String message) {
+		assertThat(response_all.extract().jsonPath().getString("message"), equalTo(message));
+    }
 }

@@ -5,7 +5,7 @@ Feature: API validation for use of Logout API
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API 
      Then Status code returned is "<status_code>" 
-      And Response body returned "<message>" 
+      And Response message returned "<message>"
   
     Examples: 
       | status_code | message            | 
