@@ -1,14 +1,19 @@
 package StepsSerenity;
 
 import net.thucydides.core.annotations.Step;
-import pages.loginPageObject;
+import pages.loginPage;
 
 public class loginUI_steps {
 	
-	static loginPageObject loginpage_object = new loginPageObject();
+	static loginPage loginpage_object;
 	
 	@Step
-	public void enter_credentials(String email, String password) {
+	public void open_login() throws InterruptedException {
+		loginpage_object.open();
+	}
+	
+	@Step
+	public void enter_credentials(String email, String password) throws InterruptedException {
 		loginpage_object.enter_email_and_password(email, password);
 	}
 	

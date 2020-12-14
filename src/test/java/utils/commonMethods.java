@@ -20,5 +20,7 @@ public class commonMethods {
 	public ValidatableResponse delete_request_valid_userID(String auth_token, String userid) {
 		return(SerenityRest.given().auth().oauth2(auth_token).when()
 				.delete(hooks_object.base_url + "security/logoff/" + userid).then());
+		
+//		SerenityRest.given().header("Authorization", "Bearer " + auth_token );
 	}
 }

@@ -6,31 +6,38 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import pages.loginPage;
 
 public class loginUI {
 
-	hooks hooks_obj = new hooks();
-	
-	@Steps
-	loginUI_steps loginUI_actions;
 
-	@Given("^Start the required browser$")
-	public void start_the_required_browser() {
+	@Steps
+	static loginUI_steps loginUI_steps_object;
+
+	@Given("^User navigates to login page$")
+	public void homepage() throws InterruptedException {
+		loginUI_steps_object.open_login();
 	}
+	
+//	@Given("^Start the required browser$")
+//	public void start_the_required_browser() throws InterruptedException {
+//		System.out.println("Broswer Instantiated");
+//		//loginUI_steps_object.open_the_loginPage();
+//	}
 
 	@When("^Enter \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void enter_the_email_and_password(String email, String password) {
-		System.out.println("Email = " + email + "password = " + password);
+	public void enter_the_email_and_password(String email, String password) throws InterruptedException {
+		loginUI_steps_object.enter_credentials(email, password);
 	}
 
 	@When("^Eye button is clicked (.+)$")
-	public void eye_button_is_clicked(String times) {
-		System.out.println("Eye button is clicked = " + times);
+	public void eye_button_is_clicked(int times) {
+		loginUI_steps_object.eye_button_clicked(times);
 	}
 
 	@When("^Forgot password link is clicked$")
 	public void forgot_password_link_is_clicked() {
-		System.out.println("Forgot password");
+		loginUI_steps_object.forgot_password();
 	}
 
 	@When("^Contact EATON support representative link is clicked$")

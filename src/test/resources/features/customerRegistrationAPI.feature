@@ -14,7 +14,7 @@ Scenario Outline: Validate Customer Registration API Unsuccessfully for Invalid 
 		| Test without phone number         | custname | testcustomer |             | some@random.com | Others        | Copy to testcust@eaton.com | 400         | 9008       | Input parameters cannot be null or empty | 
 		| Test without emailid              | custname | testcustomer | 123456789   |                 | Others        | Copy to testcust@eaton.com | 400         | 9008       | Input parameters cannot be null or empty | 
 		| Test without contact method       | custname | testcustomer | 123456789   | some@random.com |               | Copy to testcust@eaton.com | 400         | 9008       | Input parameters cannot be null or empty | 
-		| Test with valid email format      | custname | testcustomer | 123456789   | some            | Others        |                            | 400         | 9007       | Please provide valid email address       | 
+		| Test with invalid email format    | custname | testcustomer | 123456789   | some            | Others        |                            | 400         | 9007       | Please provide valid email address       | 
 		| Test with blank attribute         |          |              |             |                 |               |                            | 400         | 9008       | Input parameters cannot be null or empty | 
 		
 		

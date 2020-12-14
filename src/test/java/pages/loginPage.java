@@ -1,19 +1,35 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-
 import StepDefinitions.hooks;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.pages.WebElementFacade;
+//import net.serenitybdd.core.annotations.findby.FindBy;
+//import net.serenitybdd.core.pages.PageObject;
+//import net.serenitybdd.core.pages.WebElementFacade;
+//import net.serenitybdd.screenplay.actions.Enter;
+//import net.serenitybdd.screenplay.actions.SendKeystoElement;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("https://dev-portal.eastus.cloudapp.azure.com/#/")
-public class loginPageObject extends PageObject {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+ 
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.pages.PageObject;
+import net.thucydides.core.webelements.Checkbox;;
+
+@DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/")
+
+public class loginPage extends PageObject {
 
 	hooks hook = new hooks();
-	WebDriver driver = hooks.driver;
+	
+	////////////// ADVANCED  ///////////////////
+	@FindBy(xpath = "//[@id=\"details-button\"]")
+	private WebElementFacade advanced_button;
 
+	@FindBy(xpath = "//*[@id=\"proceed-link\"]")
+	private WebElementFacade proceed_to_link;	
+	////////////////////////////////////////////
+	
 	////////////// WEB ELEMENTS ////////////////
 	@FindBy(id = "email")
 	private WebElementFacade email_input_field;
@@ -48,11 +64,43 @@ public class loginPageObject extends PageObject {
 	@FindBy(xpath = "//h6[contains(text(),'General Questions')]")
 	private WebElementFacade eaton_support_page_title;
 	////////////////////////////////////////////////////////////////
+	
+	/////////////////// BYPASSING WARNING ///////////////////////////
+	public void check_and_proceed() {
+		if(advanced_button.isVisible()) {
+			clickOn(advanced_button);
+			clickOn(proceed_to_link);
+		}
+		else {
+			//DO NOTHING
+		}
+	}
+	/////////////////////////////////////////////////////////////////
+	
 
 	/////////////// Text Input and Click actions ///////////////////
-	public void enter_email_and_password(String email, String password) {
+	public void enter_email_and_password(String email, String password) throws InterruptedException {
+		System.out.println("++++++++++++++++++++++++++++++");
+		System.out.println("TRYING TO ENTER CREDENTIALS");
+		System.out.println("Email:  " + email + "<<<>>>>" + "Password:   " + password);
+		System.out.println("++++++++++++++++++++++++++++++");
+		
+//		System.out.println(email_input_field.is);
+//		clickOn(email_input_field);
+//		Enter.theValue(email).into(email_input_field);
 		typeInto(email_input_field, email);
-		typeInto(password_input_field, password);
+		System.out.println("++++++++++++++++++++++++++++++");
+		System.out.println("EMAIL ENTERED");
+		System.out.println("++++++++++++++++++++++++++++++");
+		Thread.sleep(5000);
+		
+
+//		clickOn(password_input_field);
+//		Enter.theValue(password).into(password_input_field);
+		System.out.println("++++++++++++++++++++++++++++++");
+		System.out.println("PASSWORD ENTERED");
+		System.out.println("++++++++++++++++++++++++++++++");
+		Thread.sleep(5000);
 	}
 
 	public void click_on_rememberMe_N_times() {

@@ -4,18 +4,20 @@ import StepDefinitions.hooks;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import pojoClasses.LoginPOJO;
 import pojoClasses.custRegPOJO;
 
 public class custRegAPI_steps {
-	LoginPOJO pojo = new LoginPOJO();
+
 	static custRegPOJO pojo_custReg = new custRegPOJO();
+	@Steps
 	loginAPI_steps loginAPI_steps;
 	hooks hooks_Object = new hooks();
 
 	static ValidatableResponse response_all;
 	static String Auth_token;
-	static String expired_auth_token = "qwihwfjkbsajflh8347134hjb421kj4b";
+	static String expired_auth_token = "qwihwfjkbsajflh8347134hjb421kj4b"; //change to file reader
 
 	@Step
 	public ValidatableResponse get_token() {
