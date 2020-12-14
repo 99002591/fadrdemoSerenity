@@ -1,12 +1,14 @@
 package StepDefinitions;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import StepsSerenity.loginUI_steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import pages.loginPage;
 
 public class loginUI {
 
@@ -36,31 +38,31 @@ public class loginUI {
 
 	@When("^Contact EATON support representative link is clicked$")
 	public void contact_eaton_support_representative_link_is_clicked() {
-		System.out.println("Eaton support link clicked");
+		loginUI_steps_object.eaton_support_link_open();
 	}
 
 	@Then("^Login fails with error message \"([^\"]*)\"$")
 	public void login_fails_with_error_message_something(String errormessage) {
-		System.out.println("Login fail validation");
+		assertThat(loginUI_steps_object.login_fail_validation(), equalTo(errormessage));
 	}
 
 	@Then("^Password should be (.+)$")
 	public void password_should_be(String visibility) {
-		System.out.println("password is" + visibility);
+		assertThat(loginUI_steps_object.password_visibility(), equalTo(visibility));
 	}
 
 	@Then("^Redirect to Forgot password page$")
 	public void redirect_to_forgot_password_page() {
-		System.out.println("Redirect to forgot password page");
+		assertThat(loginUI_steps_object.forgot_password_page_opening_validation(), equalTo("Forgot Password"));
 	}
 
 	@Then("^Help section dialog box opens up$")
 	public void help_section_dialog_box_opens_up() {
-		System.out.println("Help section dialog box opens");
+		assertThat(loginUI_steps_object.help_section_dialog_box_opening_validation(), equalTo("General Questions"));
 	}
 
 	@And("^User clicks Login button$")
 	public void user_clicks_login_button() {
-		System.out.println("Login button clicked");
+		loginUI_steps_object.login();
 	}
 }

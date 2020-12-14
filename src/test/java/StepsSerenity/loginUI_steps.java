@@ -30,6 +30,11 @@ public class loginUI_steps {
 	}
 	
 	@Step
+	public void eaton_support_link_open() {
+		loginpage_object.click_on_eaton_support();
+	}
+	
+	@Step
 	public void forgot_password() {
 		loginpage_object.click_on_forgot_password();
 	}
@@ -37,6 +42,11 @@ public class loginUI_steps {
 	@Step
 	public String forgot_password_page_opening_validation() {
 		return(loginpage_object.find_if_forgot_password_page_is_Open());
+	}
+	
+	@Step
+	public String help_section_dialog_box_opening_validation() {
+		return(loginpage_object.find_if_eaton_support_help_page_is_Open());
 	}
 	
 	@Step
