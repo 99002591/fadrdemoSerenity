@@ -52,19 +52,19 @@ public class logoutAPI_steps {
 			}
 		} else if (authtype.equals("expired")) {
 			if (useridtype.equals("valid")) {
-				response_all = commonMethods_object.delete_request_valid_userID(auth_invalid, id);
+				response_all = commonMethods_object.delete_request_valid_userID(auth_expired, id);
 			} else if (useridtype.equals("invalid")) {
-				response_all = commonMethods_object.delete_request_invalid_userID(auth_invalid,id+"uhfishfaih213");
+				response_all = commonMethods_object.delete_request_invalid_userID(auth_expired,id+"uhfishfaih213");
 			} else if (useridtype.equals("blank")) {
-				response_all = commonMethods_object.delete_request_blank_userID(auth_invalid, id_blank);
+				response_all = commonMethods_object.delete_request_blank_userID(auth_expired, id_blank);
 			}
 		} else if (authtype.equals("valid")) {
 			if (useridtype.equals("valid")) {
-				response_all = commonMethods_object.delete_request_valid_userID(auth_invalid, id);
+				response_all = commonMethods_object.delete_request_valid_userID(auth, id);
 			} else if (useridtype.equals("invalid")) {
-				response_all = commonMethods_object.delete_request_invalid_userID(auth_invalid,id+"uhfishfaih213");
+				response_all = commonMethods_object.delete_request_invalid_userID(auth,id+"uhfishfaih213");
 			} else if (useridtype.equals("blank")) {
-				response_all = commonMethods_object.delete_request_blank_userID(auth_invalid, id_blank);
+				response_all = commonMethods_object.delete_request_blank_userID(auth, id_blank);
 			}
 		}
 	return response_all;
