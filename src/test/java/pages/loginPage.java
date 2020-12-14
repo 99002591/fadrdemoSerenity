@@ -80,27 +80,8 @@ public class loginPage extends PageObject {
 
 	/////////////// Text Input and Click actions ///////////////////
 	public void enter_email_and_password(String email, String password) throws InterruptedException {
-		System.out.println("++++++++++++++++++++++++++++++");
-		System.out.println("TRYING TO ENTER CREDENTIALS");
-		System.out.println("Email:  " + email + "<<<>>>>" + "Password:   " + password);
-		System.out.println("++++++++++++++++++++++++++++++");
-		
-//		System.out.println(email_input_field.is);
-//		clickOn(email_input_field);
-//		Enter.theValue(email).into(email_input_field);
 		typeInto(email_input_field, email);
-		System.out.println("++++++++++++++++++++++++++++++");
-		System.out.println("EMAIL ENTERED");
-		System.out.println("++++++++++++++++++++++++++++++");
-		Thread.sleep(5000);
-		
-
-//		clickOn(password_input_field);
-//		Enter.theValue(password).into(password_input_field);
-		System.out.println("++++++++++++++++++++++++++++++");
-		System.out.println("PASSWORD ENTERED");
-		System.out.println("++++++++++++++++++++++++++++++");
-		Thread.sleep(5000);
+		typeInto(password_input_field, password);
 	}
 
 	public void click_on_rememberMe_N_times() {

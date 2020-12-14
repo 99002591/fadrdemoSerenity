@@ -18,12 +18,6 @@ public class loginUI {
 	public void homepage() throws InterruptedException {
 		loginUI_steps_object.open_login();
 	}
-	
-//	@Given("^Start the required browser$")
-//	public void start_the_required_browser() throws InterruptedException {
-//		System.out.println("Broswer Instantiated");
-//		//loginUI_steps_object.open_the_loginPage();
-//	}
 
 	@When("^Enter \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void enter_the_email_and_password(String email, String password) throws InterruptedException {
