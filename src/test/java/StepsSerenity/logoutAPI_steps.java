@@ -9,7 +9,7 @@ public class logoutAPI_steps {
 	static String logoff_endpoint = "security/logoff/";
 	
 	static custRegAPI_steps custRegAPI_steps_object = new custRegAPI_steps();
-	static fileReader fileReader_object;
+	static fileReader fileReader_object = new fileReader();
 	
 	static ValidatableResponse response_all;
 	static String auth, id;
@@ -24,9 +24,7 @@ public class logoutAPI_steps {
 		auth = response_all.extract().response().jsonPath().getString("data.token");
 		id = response_all.extract().response().jsonPath().getString("data.id");
 		try {
-			System.out.println("INTO THE TRY BLOCK+++++++++++++++++++++++++++");
-			auth_expired = fileReader_object.readfile("expired_token.txt");
-			System.out.println(auth_expired);
+			auth_expired = fileReader_object.readfile("expired_token");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

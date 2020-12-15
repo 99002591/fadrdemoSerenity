@@ -26,10 +26,21 @@ public class loginUI {
 		loginUI_steps_object.enter_credentials(email, password);
 	}
 
-	@When("^Eye button is clicked (.+)$")
-	public void eye_button_is_clicked(int times) {
-		loginUI_steps_object.eye_button_clicked(times);
+	@When("^Eye button is clicked \"([^\"]*)\"$")
+	public void eye_button_is_clicked(String times) {
+		System.out.println(times);
+		System.out.println("EYE BUTTON CLICK INITIATION");
+		if(times.equals("once")) {
+			System.out.println("Calling eye click once");
+			loginUI_steps_object.eye_button_clicked(1);
+		}
+		else if(times.equals("twice")) {
+			System.out.println("Calling eye click twice");
+			loginUI_steps_object.eye_button_clicked(2);
+		}
+		
 	}
+	
 
 	@When("^Forgot password link is clicked$")
 	public void forgot_password_link_is_clicked() {
@@ -46,7 +57,7 @@ public class loginUI {
 		assertThat(loginUI_steps_object.login_fail_validation(), equalTo(errormessage));
 	}
 
-	@Then("^Password should be (.+)$")
+	@Then("^Password should be \"([^\"]*)\"$")
 	public void password_should_be(String visibility) {
 		assertThat(loginUI_steps_object.password_visibility(), equalTo(visibility));
 	}
@@ -54,6 +65,7 @@ public class loginUI {
 	@Then("^Redirect to Forgot password page$")
 	public void redirect_to_forgot_password_page() {
 		assertThat(loginUI_steps_object.forgot_password_page_opening_validation(), equalTo("Forgot Password"));
+		loginUI_steps_object.back_from_forgot_password();
 	}
 
 	@Then("^Help section dialog box opens up$")

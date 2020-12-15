@@ -51,15 +51,21 @@ public class loginPage extends PageObject {
 
 	@FindBy(xpath = "//a[@class='contact-eaton']")
 	private WebElementFacade eaton_support_link;
+	
+	@FindBy(xpath = "//div[@class=\"mat-form-field-subscript-wrapper\"]")
+	private WebElementFacade under_email_validator;
 
-	@FindBy(xpath = "//*[@class=\\\"mat-error ng-star-inserted\\\"]")
-	private WebElementFacade failed_login_error_message;
+	@FindBy(xpath = "//div[@class=\"ng-tns-c16-1 ng-trigger ng-trigger-transitionMessages ng-star-inserted\"]")
+	private WebElementFacade under_password_validator;
 
 	@FindBy(xpath = "//mat-icon[@class='matIcon mat-icon notranslate material-icons mat-icon-no-color']")
 	private WebElementFacade password_visibility_attribute;
 
 	@FindBy(xpath = "//*[@class=\"mat-card-title\"]")
 	private WebElementFacade forgot_password_page_title;
+	
+	@FindBy(xpath = "//span[contains(text(),'Back')]")
+	private WebElementFacade forgot_password_back_button;
 
 	@FindBy(xpath = "//h6[contains(text(),'General Questions')]")
 	private WebElementFacade eaton_support_page_title;
@@ -105,11 +111,23 @@ public class loginPage extends PageObject {
 	public void click_on_login_button() {
 		clickOn(login_button);
 	}
+	
+	public void click_on_back_from_forgot_password() {
+		clickOn(forgot_password_back_button);
+	}
 	//////////////////////////////////////////////////////////////////////////////////
 
 	///////////////// RETRIEVING VALUES FOR ASSERTION ///////////////////
 	public String find_the_error_message_for_failed_login() {
-		return (failed_login_error_message.getText());
+		if(under_email_validator.isVisible()) {
+			return(under_email_validator.getText());
+		}
+		else if(under_password_validator.isVisible()) {
+			return(under_password_validator.getText());
+		}
+		else {
+			return ("NO ELEMENTS FOUND");
+		}
 	}
 
 	public String find_the_password_visibility() {

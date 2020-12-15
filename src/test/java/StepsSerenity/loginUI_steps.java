@@ -50,8 +50,9 @@ public class loginUI_steps {
 	}
 	
 	@Step
-	public void eye_button_clicked(int times) {
-		loginpage_object.click_on_eye_button(times);
+	public void eye_button_clicked(int time) {
+		System.out.println("IN SERENITY STEPS" + time);
+		loginpage_object.click_on_eye_button(time);
 	}
 	
 	@Step
@@ -62,5 +63,10 @@ public class loginUI_steps {
 	@Step
 	public String login_fail_validation() {
 		return(loginpage_object.find_the_error_message_for_failed_login());
+	}
+	
+	@Step
+	public void back_from_forgot_password() {
+		loginpage_object.click_on_back_from_forgot_password();
 	}
 }
