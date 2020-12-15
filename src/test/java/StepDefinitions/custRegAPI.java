@@ -10,15 +10,9 @@ import net.thucydides.core.annotations.Steps;
 public class custRegAPI {
 
 	@Steps
-	static custRegAPI_steps custRegAPI_steps_object;
-
+	static custRegAPI_steps custRegAPI_steps_object = new custRegAPI_steps();
 	static commonAssertions commonAssertions_object = new commonAssertions();
 	static ValidatableResponse response_all;
-
-	@Given("Login successfully to generate authorisation token")
-	public void login_successfully_to_generate_authorisation_token() {
-		custRegAPI_steps_object.get_token();
-	}
 
 	@And("^Prepare the request body with \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void prepare_the_request_body(String name, String contactname, String phonenumber, String emailid,

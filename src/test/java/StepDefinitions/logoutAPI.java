@@ -14,11 +14,6 @@ public class logoutAPI {
 	static commonAssertions commonAssertions_object = new commonAssertions();
 	static ValidatableResponse response_all;
 
-	@Given("Login successfully and generate authorisation token")
-	public void login_successfully_and_generate_authorisation_token() {
-		logoutAPI_steps_object.generate_token_and_id();
-	}
-
 	@When("DELETE request on Logout API")
 	public void delete_request_on_logout_api() {
 		response_all = logoutAPI_steps_object.delete_request();

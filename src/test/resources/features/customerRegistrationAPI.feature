@@ -2,7 +2,7 @@ Feature: API validation for negative test cases in Customer Registration API
 
 @API_SITE
 Scenario Outline: Validate Customer Registration API Unsuccessfully for Invalid Scenarios 
-	Given Login successfully to generate authorisation token 
+	Given Login successfully and generate authorisation token 
 	And Prepare the request body with "<name>" "<contactName>" "<phoneNumber>" "<emailId>" "<contactMethod>" "<additionalinfo>" 
 	When POST request on Customer Registration API 
 	Then Status code returned is "<status_code>" 
@@ -20,7 +20,7 @@ Scenario Outline: Validate Customer Registration API Unsuccessfully for Invalid 
 		
  @API_SITE		
  Scenario Outline: Validate Customer Registration API Unsuccessfully with Incorrect Authentication
-    Given Login successfully to generate authorisation token
+    Given Login successfully and generate authorisation token
       And Prepare the request body with "<name>" "<contactName>" "<phoneNumber>" "<emailId>" "<contactMethod>" "<additionalinfo>"
      When POST request on Customer Registration API with incorrect authentication of type "<bad_auth_type>"
      Then Status code returned is "<status_code>"

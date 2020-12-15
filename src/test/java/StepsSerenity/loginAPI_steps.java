@@ -22,7 +22,6 @@ public class loginAPI_steps {
 	public ValidatableResponse post_request_to_endpoint() {
 		response_all = (SerenityRest.given().contentType("application/json").body(loginPOJO_object).when()
 				.post(login_endpoint).then());
-		System.out.println("SUCCESS");
 		return response_all;
 
 	}

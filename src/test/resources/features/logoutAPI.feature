@@ -1,7 +1,7 @@
 #Author Amit Das
 Feature: API validation for use of Logout API 
 #
-	@API_SECURITY
+  @API_SECURITY
   Scenario Outline: Validate Logout API successfully 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API 
@@ -36,8 +36,8 @@ Feature: API validation for use of Logout API
   
     Examples: 
       | Test Description           | auth_type | user_id_type | status_code | error_code | error_description                        | 
-      | Logout with invalid userID | blank     | valid        | 401         | 9001       | Unauthorized access                      | 
-      | Logout with blank userID   | blank     | invalid      | 400         | 9010       | Please enter valid GUID                  | 
+      | Logout with invalid userID | blank     | valid        | 401         | 9009       | Security token must not be null or empty | 
+      | Logout with blank userID   | blank     | invalid      | 401         | 9009       | Security token must not be null or empty | 
       | Logout with valid userID   | blank     | blank        | 404         |            |                                          | 
   
   @API_SECURITY
