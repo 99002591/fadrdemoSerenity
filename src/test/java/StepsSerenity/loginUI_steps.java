@@ -51,7 +51,6 @@ public class loginUI_steps {
 	
 	@Step
 	public void eye_button_clicked(int time) {
-		System.out.println("IN SERENITY STEPS" + time);
 		loginpage_object.click_on_eye_button(time);
 	}
 	

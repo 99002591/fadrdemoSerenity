@@ -1,6 +1,5 @@
 package StepsSerenity;
 
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;

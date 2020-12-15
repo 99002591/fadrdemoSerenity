@@ -28,14 +28,10 @@ public class loginUI {
 
 	@When("^Eye button is clicked \"([^\"]*)\"$")
 	public void eye_button_is_clicked(String times) {
-		System.out.println(times);
-		System.out.println("EYE BUTTON CLICK INITIATION");
 		if(times.equals("once")) {
-			System.out.println("Calling eye click once");
 			loginUI_steps_object.eye_button_clicked(1);
 		}
 		else if(times.equals("twice")) {
-			System.out.println("Calling eye click twice");
 			loginUI_steps_object.eye_button_clicked(2);
 		}
 		

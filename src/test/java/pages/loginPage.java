@@ -1,26 +1,14 @@
 package pages;
 
-import StepDefinitions.hooks;
-//import net.serenitybdd.core.annotations.findby.FindBy;
-//import net.serenitybdd.core.pages.PageObject;
-//import net.serenitybdd.core.pages.WebElementFacade;
-//import net.serenitybdd.screenplay.actions.Enter;
-//import net.serenitybdd.screenplay.actions.SendKeystoElement;
-import net.thucydides.core.annotations.DefaultUrl;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
- 
+
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.pages.PageObject;
-import net.thucydides.core.webelements.Checkbox;;
+import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.PageObject;;
 
 @DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/")
 
 public class loginPage extends PageObject {
-
-	hooks hook = new hooks();
 	
 	////////////// ADVANCED  ///////////////////
 	@FindBy(xpath = "//[@id=\"details-button\"]")
@@ -136,12 +124,10 @@ public class loginPage extends PageObject {
 
 	public String find_if_forgot_password_page_is_Open() {
 		return (forgot_password_page_title.getText());
-		// ASSERT THE RETURNED STRING WITH WITH "Forgot Password"
 	}
 
 	public String find_if_eaton_support_help_page_is_Open() {
 		return (eaton_support_page_title.getText());
-		// ASSERT THE RETURNED STRING WITH "General Questions"
 	}
 
 	public boolean if_login_button_enabled() {
