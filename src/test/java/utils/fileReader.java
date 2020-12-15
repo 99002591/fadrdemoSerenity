@@ -7,7 +7,8 @@ public class fileReader {
 public String content = null,line;
 	
 	public String readfile(String fileName) throws Exception {
-		FileReader f_read = new FileReader("D:\\Eclipse_Workspace\\fadrdemoSerenity\\src\\test\\resources\\Tokens\\"+fileName);
+		//D:\\Eclipse_Workspace\\fadrdemoSerenity\\src\\test\\resources\\Tokens\\
+		FileReader f_read = new FileReader("src/test/resources/Tokens/"+fileName);
 		BufferedReader b_read = new BufferedReader(f_read);
 		 while ((line = b_read.readLine()) != null) {
 			 content += line;
