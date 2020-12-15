@@ -11,28 +11,13 @@ public class custRegAPI_steps {
 
 	@Steps
 	loginAPI_steps loginAPI_steps;
+	common_steps common_steps_objects = new common_steps();
 	
 	static custRegPOJO pojo_custReg = new custRegPOJO();
 	static fileReader fileReader_object = new fileReader();
-	static String login_endpoint = "security/login";
 	static String customer_reg_endpoint = "site/account/register";
 	static ValidatableResponse response_all;
-	static String Auth_token;
-	static String auth_expired;
 
-//	@Step
-//	public ValidatableResponse get_token() {
-//		loginAPI_steps.prepare_request_body("fadr_support_technician@eaton.com", "Form7@22");
-//		response_all = (SerenityRest.given().contentType("application/json").body(loginAPI_steps.return_pojo_object())
-//				.when().post(login_endpoint).then());
-//		Auth_token = response_all.extract().response().jsonPath().getString("data.token");
-//		try {
-//			auth_expired = fileReader_object.readfile("expired_token");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return response_all;
-//	}
 
 	@Step
 	public void prep_request_body(String name, String contactname, String phonenumber, String emailid,
@@ -47,21 +32,20 @@ public class custRegAPI_steps {
 
 	@Step
 	public ValidatableResponse post_custReg_request() {
-		response_all = SerenityRest.given().auth().oauth2(Auth_token).contentType("application/json").body(pojo_custReg)
-				.when().post(customer_reg_endpoint).then();
+		response_all = SerenityRest.given().auth().oauth2(common_steps_objects.get_auth()).contentType("application/json").body(pojo_custReg).when().post(customer_reg_endpoint).then();
 		return response_all;
 	}
 
 	@Step
 	public ValidatableResponse post_bad_custReg_request(String bad_auth_type) {
 		if (bad_auth_type.equalsIgnoreCase("invalid")) {
-			response_all = SerenityRest.given().auth().oauth2(Auth_token + "invalid").contentType("application/json")
+			response_all = SerenityRest.given().auth().oauth2(common_steps_objects.get_auth_invalid()).contentType("application/json")
 					.body(pojo_custReg).when().post(customer_reg_endpoint).then();
 		} else if (bad_auth_type.equalsIgnoreCase("expired")) {
-			response_all = SerenityRest.given().auth().oauth2(auth_expired).contentType("application/json")
+			response_all = SerenityRest.given().auth().oauth2(common_steps_objects.get_auth_expired()).contentType("application/json")
 					.body(pojo_custReg).when().post(customer_reg_endpoint).then();
 		} else if (bad_auth_type.equalsIgnoreCase("blank")) {
-			response_all = SerenityRest.given().auth().oauth2("").contentType("application/json")
+			response_all = SerenityRest.given().auth().oauth2(common_steps_objects.get_auth_blank()).contentType("application/json")
 					.body(pojo_custReg).when().post(customer_reg_endpoint).then();
 		}
 		return response_all;

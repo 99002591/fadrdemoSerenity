@@ -1,5 +1,6 @@
 package StepsSerenity;
 
+import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
@@ -33,6 +34,7 @@ public class common_steps {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Step
