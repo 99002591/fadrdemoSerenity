@@ -3,6 +3,18 @@
 #I
 Feature: Login with UI 
 
+  @BrowserAction
+  Scenario Outline: Login with correct credentials
+    Given User navigates to login page
+     When Enter "<email>" and "<password>"
+      And User clicks Login button
+     Then Login successful with user redirected to dashboard
+     Then Logout
+  
+    Examples: 
+      | Category of user | email                             | password | 
+      | Eaton Technician | fadr_support_technician@eaton.com | Form7@22 | 
+
 @BrowserAction 
   Scenario Outline: Login with incorrect credentails. 
     Given User navigates to login page 
@@ -21,14 +33,15 @@ Feature: Login with UI
   Scenario Outline: Login with blank credentials. 
     Given User navigates to login page
      When Enter "<email>" and "<password>" 
-      And User clicks Login button 
+      And User clicks Login button
+     Then Login button is disabled
      Then Login fails with error message "<error_message>" 
   
     Examples: 
-      | Description                         | email                        | password  | error_message        | 
-      | Login with blank password           | fadr_support_admin@eaton.com |           | Password is required | 
-      | Login with blank email              |                              | valid@123 | E-mail is required   | 
-      | Login with blank email and password |                              |           | E-mail is required   | 
+      | Description                         | email                        | password  | error_message                           | 
+      | Login with blank password           | fadr_support_admin@eaton.com |           | Password is required                    | 
+      | Login with blank email              |                              | valid@123 | E-mail is required                      | 
+      | Login with blank email and password |                              |           | E-mail is required,Password is required | 
   
   @BrowserAction 
   Scenario Outline: Password masking and unmasking 

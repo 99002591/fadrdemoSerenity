@@ -1,5 +1,10 @@
 package StepsSerenity;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
 import net.thucydides.core.annotations.Step;
 import pages.loginPage;
 
@@ -18,14 +23,9 @@ public class loginUI_steps {
 	}
 	
 	@Step
-	public boolean login() {
-		boolean state_of_login_button = loginpage_object.if_login_button_enabled();
-		if(state_of_login_button == true) {
+	public void login() {
+		if(loginpage_object.if_login_button_enabled() == false) {
 			loginpage_object.click_on_login_button();
-			return state_of_login_button;
-		}
-		else {
-			return state_of_login_button;
 		}
 	}
 	
@@ -40,13 +40,13 @@ public class loginUI_steps {
 	}
 	
 	@Step
-	public String forgot_password_page_opening_validation() {
-		return(loginpage_object.find_if_forgot_password_page_is_Open());
+	public void forgot_password_page_opening_validation() {
+		assertThat(loginpage_object.find_if_forgot_password_page_is_Open(), equalTo("Forgot Password"));
 	}
 	
 	@Step
-	public String help_section_dialog_box_opening_validation() {
-		return(loginpage_object.find_if_eaton_support_help_page_is_Open());
+	public void help_section_dialog_box_opening_validation() {
+		assertThat(loginpage_object.find_if_eaton_support_help_page_is_Open(), equalTo("General Questions"));
 	}
 	
 	@Step
@@ -55,17 +55,36 @@ public class loginUI_steps {
 	}
 	
 	@Step
-	public String password_visibility() {
-		return loginpage_object.find_the_password_visibility();
+	public void password_visibility(String visibility) {
+		assertThat(loginpage_object.find_the_password_visibility(), equalTo(visibility));
 	}
 	
 	@Step
-	public String login_fail_validation() {
-		return(loginpage_object.find_the_error_message_for_failed_login());
+	public void login_fail_validation(String errormessage){
+		List<String> all_error_msgs = loginpage_object.getResultTitles();
+		System.out.println(all_error_msgs);
+		boolean if_present = all_error_msgs.contains(errormessage);
+		assertThat(if_present, equalTo(true));	
 	}
 	
 	@Step
 	public void back_from_forgot_password() {
 		loginpage_object.click_on_back_from_forgot_password();
+	}
+	
+	@Step
+	public void login_button_state_check() {
+		assertThat(loginpage_object.if_login_button_enabled(), equalTo(false));
+	}
+	
+	@Step
+	public void redirect_to_dashboard() {
+		assertThat(loginpage_object.if_logged_in(), equalTo("View reports"));
+	}
+	
+	@Step
+	public void logout_of_application() {
+		loginpage_object.click_on_user_menu();
+		loginpage_object.click_on_log_out();
 	}
 }

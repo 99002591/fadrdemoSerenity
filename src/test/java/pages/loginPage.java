@@ -1,23 +1,29 @@
 package pages;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.support.FindBy;
 
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.serenitybdd.core.pages.WebElementState;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;;
 
 @DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/")
 
 public class loginPage extends PageObject {
-	
-	////////////// ADVANCED  ///////////////////
+
+	private static final WebElementState under_password_validator = null;
+
+	////////////// ADVANCED ///////////////////
 	@FindBy(xpath = "//[@id=\"details-button\"]")
 	private WebElementFacade advanced_button;
 
 	@FindBy(xpath = "//*[@id=\"proceed-link\"]")
-	private WebElementFacade proceed_to_link;	
+	private WebElementFacade proceed_to_link;
 	////////////////////////////////////////////
-	
+
 	////////////// WEB ELEMENTS ////////////////
 	@FindBy(id = "email")
 	private WebElementFacade email_input_field;
@@ -39,41 +45,48 @@ public class loginPage extends PageObject {
 
 	@FindBy(xpath = "//a[@class='contact-eaton']")
 	private WebElementFacade eaton_support_link;
-	
-	@FindBy(xpath = "//div[@class=\"mat-form-field-subscript-wrapper\"]")
-	private WebElementFacade under_email_validator;
 
-	@FindBy(xpath = "//div[@class=\"ng-tns-c16-1 ng-trigger ng-trigger-transitionMessages ng-star-inserted\"]")
-	private WebElementFacade under_password_validator;
+	//////////////////////// <<<< LIST >>>>////////////////////////////
 
+	@FindBy(xpath = "//*[@class=\"mat-error ng-star-inserted\"]")
+	private List<WebElementFacade> error_msg;
+
+	//////////////////////////////////////////////////////////////////
 	@FindBy(xpath = "//mat-icon[@class='matIcon mat-icon notranslate material-icons mat-icon-no-color']")
 	private WebElementFacade password_visibility_attribute;
 
 	@FindBy(xpath = "//*[@class=\"mat-card-title\"]")
 	private WebElementFacade forgot_password_page_title;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Back')]")
 	private WebElementFacade forgot_password_back_button;
 
 	@FindBy(xpath = "//h6[contains(text(),'General Questions')]")
 	private WebElementFacade eaton_support_page_title;
+
+	@FindBy(xpath = "//*[@id=\"viewReportId\"]")
+	private WebElementFacade dashboard_header;
+
+	@FindBy(id = "userinfoMenuId")
+	private WebElementFacade user_info_menu;
+
+	@FindBy(xpath = "//span[contains(text(),'Log Out')]")
+	private WebElementFacade logout_button;
 	////////////////////////////////////////////////////////////////
-	
+
 	/////////////////// BYPASSING WARNING ///////////////////////////
 	public void check_and_proceed() {
-		if(advanced_button.isVisible()) {
+		if (advanced_button.isVisible()) {
 			clickOn(advanced_button);
 			clickOn(proceed_to_link);
-		}
-		else {
-			//DO NOTHING
+		} else {
+			// DO NOTHING
 		}
 	}
 	/////////////////////////////////////////////////////////////////
-	
 
 	/////////////// Text Input and Click actions ///////////////////
-	public void enter_email_and_password(String email, String password) throws InterruptedException {
+	public void enter_email_and_password(String email, String password) {
 		typeInto(email_input_field, email);
 		typeInto(password_input_field, password);
 	}
@@ -99,23 +112,25 @@ public class loginPage extends PageObject {
 	public void click_on_login_button() {
 		clickOn(login_button);
 	}
-	
+
 	public void click_on_back_from_forgot_password() {
 		clickOn(forgot_password_back_button);
+	}
+
+	public void click_on_user_menu() {
+		clickOn(user_info_menu);
+	}
+
+	public void click_on_log_out() {
+		clickOn(logout_button);
 	}
 	//////////////////////////////////////////////////////////////////////////////////
 
 	///////////////// RETRIEVING VALUES FOR ASSERTION ///////////////////
-	public String find_the_error_message_for_failed_login() {
-		if(under_email_validator.isVisible()) {
-			return(under_email_validator.getText());
-		}
-		else if(under_password_validator.isVisible()) {
-			return(under_password_validator.getText());
-		}
-		else {
-			return ("NO ELEMENTS FOUND");
-		}
+	public List<String> getResultTitles() {
+		return error_msg.stream()
+				.map(element -> element.getText())
+				.collect(Collectors.toList());
 	}
 
 	public String find_the_password_visibility() {
@@ -131,8 +146,12 @@ public class loginPage extends PageObject {
 	}
 
 	public boolean if_login_button_enabled() {
-		return (login_button.isEnabled());
+		return(login_button.isDisabled());
 	}
-	/////////////////////////////////////////////////////////////////////////////////////////
+
+	public String if_logged_in() {
+		return (dashboard_header.getText());
+	}
+	/////////////////////////////////////////////////////////////////////////
 
 }
