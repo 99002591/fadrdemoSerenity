@@ -4,16 +4,16 @@
 Feature: Login with UI 
 
   @BrowserAction
-  Scenario Outline: Login with correct credentials
+  Scenario: Login with correct credentials
     Given User navigates to login page
-     When Enter "<email>" and "<password>"
+     When Enter "fadr_support_technician@eaton.com" and "Form7@22"
       And User clicks Login button
      Then Login successful with user redirected to dashboard
      Then Logout
   
-    Examples: 
-      | Category of user | email                             | password | 
-      | Eaton Technician | fadr_support_technician@eaton.com | Form7@22 | 
+#    Examples: 
+#      | Category of user | email                             | password | 
+#      | Eaton Technician | fadr_support_technician@eaton.com | Form7@22 | 
 
 @BrowserAction 
   Scenario Outline: Login with incorrect credentials. 

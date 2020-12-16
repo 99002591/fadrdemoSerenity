@@ -62,7 +62,6 @@ public class loginUI_steps {
 	@Step
 	public void login_fail_validation(String errormessage){
 		List<String> all_error_msgs = loginpage_object.getResultTitles();
-		System.out.println(all_error_msgs);
 		boolean if_present = all_error_msgs.contains(errormessage);
 		assertThat(if_present, equalTo(true));	
 	}
