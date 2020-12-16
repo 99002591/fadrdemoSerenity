@@ -1,6 +1,6 @@
 #Author: Amit Das
 #
-#I
+#
 Feature: Login with UI 
 
   @BrowserAction
@@ -16,7 +16,7 @@ Feature: Login with UI
       | Eaton Technician | fadr_support_technician@eaton.com | Form7@22 | 
 
 @BrowserAction 
-  Scenario Outline: Login with incorrect credentails. 
+  Scenario Outline: Login with incorrect credentials. 
     Given User navigates to login page 
      When Enter "<email>" and "<password>" 
       And User clicks Login button 
