@@ -4,12 +4,13 @@ import org.openqa.selenium.support.FindBy;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
 
-public class customerRegistration extends PageObject {
+@DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/factoryreset/register_customer")
+public class custReg_page extends PageObject {
 
-	///////////////////////////// PRE MAIN SITE LOAD
-	///////////////////////////// ELEMENTS////////////////////////////////
-	@FindBy(xpath = "//span[@class=\"mat-expansion-indicator ng-tns-c12-20 ng-trigger ng-trigger-indicatorRotate ng-star-inserted\"]")
+	////////////////      PRE MAIN SITE LOAD ELEMENTS     ////////////////////
+	@FindBy(xpath = "//div[@class = \"ng-star-inserted\"]")
 	private WebElementFacade factory_rest_drop_down;
 
 	@FindBy(xpath = "//*[@routerlink=\"/factoryreset/register_customer\"]")
@@ -17,7 +18,7 @@ public class customerRegistration extends PageObject {
 
 	@FindBy(xpath = "//mat-toolbar[contains(text(),' Register Customer ')]")
 	private WebElementFacade registerCustomer_page_header;
-	//////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
 
 	////////////////// MAIN SITE INPUT FIELDS WEBELEMENTS/////////////////////////
 	@FindBy(id = "customerName")
@@ -67,6 +68,14 @@ public class customerRegistration extends PageObject {
 	/////////////////////////////////////////////////////////////////////
 
 	////////////////// BUTTON & FIELDS CLICKS ////////////////////
+	public void click_factoryReset_dropdown() {
+		clickOn(factory_rest_drop_down);
+	}
+	
+	public void click_customer_registration() {
+		clickOn(register_customer);
+	}
+	
 	public void click_submit() {
 		clickOn(submit_button);
 	}
@@ -96,12 +105,15 @@ public class customerRegistration extends PageObject {
 	}
 
 	public void choose_contact_method(String method) {
+		System.out.println("CONTACT METHOD = " + method);
 		if (method.equals("email")) {
 			clickOn(contactMethod_email);
 		} else if (method.equals("phone")) {
 			clickOn(contactMethod_phone);
 		} else if (method.equals("other")) {
 			clickOn(contactMethod_other);
+		} else {
+			//DO Nothing
 		}
 	}
 
@@ -130,6 +142,21 @@ public class customerRegistration extends PageObject {
 	///////////////////////////////////////////////////////////////////////
 
 	////////////// DATA RETRIEVING FROM TEXT FIELDS ///////////////
-
+	public String get_customerName() {
+		return(customer_name.getText());
+	}
+	public String get_contactName() {
+		return(contact_name.getText());
+	}
+	public String get_contactPhone() {
+		return(contact_phone.getText());
+	}
+	public String get_contactEmail() {
+		return(contact_email.getText());
+	}
+	
+	public boolean get_header(String header) {
+		return((registerCustomer_page_header.getText()).contains(header));
+	}
 	////////////////////////////////////////////////////////////////////////
 }

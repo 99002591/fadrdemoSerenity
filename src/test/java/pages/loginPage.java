@@ -131,7 +131,6 @@ public class loginPage extends PageObject {
 	}
 
 	public boolean if_login_button_enabled() {
-		System.out.println(login_button.isClickable());
 		return(login_button.isClickable());
 	}
 

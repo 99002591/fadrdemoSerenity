@@ -95,3 +95,6 @@
 [1216/160702.661:ERROR:crash_report_database_win.cc(585)] GetFileAttributes C:\Users\99002591\AppData\Local\Temp\scoped_dir22404_843806644\Crashpad: The system cannot find the file specified. (0x2)
 [1216/160930.760:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1216/161258.202:ERROR:crash_report_database_win.cc(585)] GetFileAttributes C:\Users\99002591\AppData\Local\Temp\scoped_dir7968_1422851553\Crashpad: The system cannot find the file specified. (0x2)
+[1217/114247.274:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1217/114613.941:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1217/122305.783:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
