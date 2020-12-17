@@ -41,5 +41,5 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
       | Registration with  alphabetic phone number                  | Jeff          | Joe          | qwertyuiop    | joe@biden.com      | phone          | Please enter valid phone number                            | 
       | Registration with invalid email format and alphabetic phone | Bill          | Boris        | asdfghjklm    | narendra@          | other          | Please enter valid phone number,Please enter a valid email |
       
-   @Logout
-   Scenario Outline 
+#   @Logout
+#   Scenario Outline 
