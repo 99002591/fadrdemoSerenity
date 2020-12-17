@@ -30,7 +30,7 @@ public class customerRegsitration_steps_UI {
 	}
 
 	public void state_check_of_submit() {
-		assertThat(custReg_pageObj.state_of_submit_button(), equalTo(false));
+		assertThat(custReg_pageObj.state_of_submit_button(), equalTo(true));
 	}
 
 	public void click_dropdown() {

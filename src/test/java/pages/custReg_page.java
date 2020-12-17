@@ -66,9 +66,7 @@ public class custReg_page extends PageObject {
 
 	///////////////// BUTTON STATE CHECKS //////////////////////////
 	public boolean state_of_submit_button() {
-		System.out.println(submit_button.isClickable());
-		System.out.println(submit_button.isEnabled());
-		return (submit_button.isEnabled());
+		return (submit_button.isDisabled());
 	}
 
 	public boolean state_of_reset_button() {
@@ -86,7 +84,7 @@ public class custReg_page extends PageObject {
 	}
 
 	public void click_submit() {
-		if (!submit_button.isEnabled()) {
+		if (!submit_button.isDisabled()) {
 			clickOn(submit_button);
 		}
 	}
