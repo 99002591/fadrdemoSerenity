@@ -1,8 +1,5 @@
 package pages;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.openqa.selenium.support.FindBy;
 
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,8 +10,6 @@ import net.thucydides.core.pages.PageObject;;
 @DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/")
 
 public class loginPage extends PageObject {
-
-	private static final WebElementState under_password_validator = null;
 
 	////////////// ADVANCED ///////////////////
 	@FindBy(xpath = "//[@id=\"details-button\"]")
@@ -45,11 +40,6 @@ public class loginPage extends PageObject {
 
 	@FindBy(xpath = "//a[@class='contact-eaton']")
 	private WebElementFacade eaton_support_link;
-
-	//////////////////////// <<<< LIST >>>>////////////////////////////
-
-	@FindBy(xpath = "//*[@class=\"mat-error ng-star-inserted\"]")
-	private List<WebElementFacade> error_msg;
 
 	//////////////////////////////////////////////////////////////////
 	@FindBy(xpath = "//mat-icon[@class='matIcon mat-icon notranslate material-icons mat-icon-no-color']")
@@ -127,11 +117,6 @@ public class loginPage extends PageObject {
 	//////////////////////////////////////////////////////////////////////////////////
 
 	///////////////// RETRIEVING VALUES FOR ASSERTION ///////////////////
-	public List<String> getResultTitles() {
-		return error_msg.stream()
-				.map(element -> element.getText())
-				.collect(Collectors.toList());
-	}
 
 	public String find_the_password_visibility() {
 		return (password_visibility_attribute.getText());
@@ -146,7 +131,8 @@ public class loginPage extends PageObject {
 	}
 
 	public boolean if_login_button_enabled() {
-		return(login_button.isDisabled());
+		System.out.println(login_button.isClickable());
+		return(login_button.isClickable());
 	}
 
 	public String if_logged_in() {

@@ -6,25 +6,27 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import net.thucydides.core.annotations.Step;
+import pages.commonPage;
 import pages.loginPage;
 
 public class loginUI_steps {
 	
 	static loginPage loginpage_object;
+	static commonPage commonpage_object;
 	
 	@Step
-	public void open_login() throws InterruptedException {
+	public void open_login(){
 		loginpage_object.open();
 	}
 	
 	@Step
-	public void enter_credentials(String email, String password) throws InterruptedException {
+	public void enter_credentials(String email, String password){
 		loginpage_object.enter_email_and_password(email, password);
 	}
 	
 	@Step
 	public void login() {
-		if(loginpage_object.if_login_button_enabled() == false) {
+		if(loginpage_object.if_login_button_enabled() == true) {
 			loginpage_object.click_on_login_button();
 		}
 	}
@@ -61,9 +63,7 @@ public class loginUI_steps {
 	
 	@Step
 	public void login_fail_validation(String errormessage){
-		List<String> all_error_msgs = loginpage_object.getResultTitles();
-		boolean if_present = all_error_msgs.contains(errormessage);
-		assertThat(if_present, equalTo(true));	
+		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));	
 	}
 	
 	@Step
@@ -73,7 +73,7 @@ public class loginUI_steps {
 	
 	@Step
 	public void login_button_state_check() {
-		assertThat(loginpage_object.if_login_button_enabled(), equalTo(false));
+		assertThat(loginpage_object.if_login_button_enabled(), equalTo(true));
 	}
 	
 	@Step

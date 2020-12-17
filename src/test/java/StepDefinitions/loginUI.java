@@ -15,16 +15,6 @@ public class loginUI {
 	@Steps
 	static loginUI_steps loginUI_steps_object;
 
-	@Given("^User navigates to login page$")
-	public void homepage() throws InterruptedException {
-		loginUI_steps_object.open_login();
-	}
-
-	@When("^Enter \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void enter_the_email_and_password(String email, String password) throws InterruptedException {
-		loginUI_steps_object.enter_credentials(email, password);
-	}
-
 	@When("^Eye button is clicked \"([^\"]*)\"$")
 	public void eye_button_is_clicked(String times) {
 		if (times.equals("once")) {
@@ -32,7 +22,6 @@ public class loginUI {
 		} else if (times.equals("twice")) {
 			loginUI_steps_object.eye_button_clicked(2);
 		}
-
 	}
 
 	@When("^Forgot password link is clicked$")
@@ -76,11 +65,6 @@ public class loginUI {
 	@Then("^Help section dialog box opens up$")
 	public void help_section_dialog_box_opens_up() {
 		loginUI_steps_object.help_section_dialog_box_opening_validation();
-	}
-
-	@And("^User clicks Login button$")
-	public void user_clicks_login_button() {
-		loginUI_steps_object.login();
 	}
 
 	@Then("^Login successful with user redirected to dashboard$")

@@ -1,16 +1,11 @@
 package pojoClasses;
 
 public class custRegPOJO {
-	 private String name;
-
+	    private String name;
 	    private String contactName;
-
 	    private String phoneNumber;
-
 	    private String emailId;
-
 	    private String contactMethod;
-
 	    private String additionalInfo;
 
 	    public void setName(String name){
