@@ -14,7 +14,8 @@ public class customerRegsitration_steps_UI {
 		custReg_pageObj.open();
 	}
 
-	public void fill_test_details(String customername, String contactname, String contactphone, String contactemail, String contactmethod) {
+	public void fill_test_details(String customername, String contactname, String contactphone, String contactemail,
+			String contactmethod) {
 		custReg_pageObj.click_customer_name();
 		custReg_pageObj.enter_customer_name(customername);
 		custReg_pageObj.click_contact_name();

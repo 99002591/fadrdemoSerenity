@@ -16,9 +16,9 @@ Feature: Customer Registration
   Scenario Outline: Unsuccessful Customer Registration in input fields left blank 
     Given User Navigates to customer registration
      When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "<contact_email>" "<contact_method>"
-      And Click on submit button
-     Then Submit button is disabled
-     Then Submission fails with "<error messages>"
+#      And Click on submit button
+#     Then Submit button is disabled
+     Then Submission fails with "<error_messages>"
   
     Examples: 
       | Test Description                      | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_messages                                                                                                                     | 

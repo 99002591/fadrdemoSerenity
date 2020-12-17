@@ -4,12 +4,16 @@ import org.openqa.selenium.support.FindBy;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.serenitybdd.screenplay.actions.selectactions.SelectByVisibleTextFromBy;
+import net.serenitybdd.screenplay.actions.selectactions.SelectByVisibleTextFromElement;
+import net.serenitybdd.screenplay.actions.selectactions.SelectByVisibleTextFromTarget;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.components.Dropdown;
 
 @DefaultUrl("https://smpservices-qa.eastus.cloudapp.azure.com/#/factoryreset/register_customer")
 public class custReg_page extends PageObject {
 
-	////////////////      PRE MAIN SITE LOAD ELEMENTS     ////////////////////
+	//////////////// PRE MAIN SITE LOAD ELEMENTS ////////////////////
 	@FindBy(xpath = "//div[@class = \"ng-star-inserted\"]")
 	private WebElementFacade factory_rest_drop_down;
 
@@ -39,14 +43,17 @@ public class custReg_page extends PageObject {
 	@FindBy(id = "customerTextArea")
 	private WebElementFacade additional_Info;
 
-	@FindBy(id = "mat-option-5")
-	private WebElementFacade contactMethod_email;
+	@FindBy(xpath = "//span[@class='mat-option-text'][contains(text(),'E-mail')]")
+	private WebElementFacade dropdown_email;
 
-	@FindBy(id = "mat-option-6")
-	private WebElementFacade contactMethod_phone;
+	@FindBy(xpath = "//span[@class='mat-option-text'][contains(text(),'Telephone')]")
+	private WebElementFacade dropdown_phone;
 
-	@FindBy(id = "mat-option-7")
-	private WebElementFacade contactMethod_other;
+	@FindBy(xpath = "//span[@class='mat-option-text'][contains(text(),'Other')]")
+	private WebElementFacade dropdown_other;
+	
+	@FindBy(xpath = "//span[@class='mat-option-text'][contains(text(),'Select contact method')]")
+	private WebElementFacade dropdown_no_method;
 	/////////////////////////////////////////////////////////////////////
 
 	///////////////// MAIN SITE BUTTONS //////////////////////////
@@ -59,7 +66,9 @@ public class custReg_page extends PageObject {
 
 	///////////////// BUTTON STATE CHECKS //////////////////////////
 	public boolean state_of_submit_button() {
-		return (submit_button.isClickable());
+		System.out.println(submit_button.isClickable());
+		System.out.println(submit_button.isEnabled());
+		return (submit_button.isEnabled());
 	}
 
 	public boolean state_of_reset_button() {
@@ -71,13 +80,15 @@ public class custReg_page extends PageObject {
 	public void click_factoryReset_dropdown() {
 		clickOn(factory_rest_drop_down);
 	}
-	
+
 	public void click_customer_registration() {
 		clickOn(register_customer);
 	}
-	
+
 	public void click_submit() {
-		clickOn(submit_button);
+		if (!submit_button.isEnabled()) {
+			clickOn(submit_button);
+		}
 	}
 
 	public void click_reset() {
@@ -105,15 +116,14 @@ public class custReg_page extends PageObject {
 	}
 
 	public void choose_contact_method(String method) {
-		System.out.println("CONTACT METHOD = " + method);
 		if (method.equals("email")) {
-			clickOn(contactMethod_email);
+			clickOn(dropdown_email);
 		} else if (method.equals("phone")) {
-			clickOn(contactMethod_phone);
+			clickOn(dropdown_phone);
 		} else if (method.equals("other")) {
-			clickOn(contactMethod_other);
+			clickOn(dropdown_other);
 		} else {
-			//DO Nothing
+			clickOn(dropdown_no_method);
 		}
 	}
 
@@ -143,20 +153,23 @@ public class custReg_page extends PageObject {
 
 	////////////// DATA RETRIEVING FROM TEXT FIELDS ///////////////
 	public String get_customerName() {
-		return(customer_name.getText());
+		return (customer_name.getText());
 	}
+
 	public String get_contactName() {
-		return(contact_name.getText());
+		return (contact_name.getText());
 	}
+
 	public String get_contactPhone() {
-		return(contact_phone.getText());
+		return (contact_phone.getText());
 	}
+
 	public String get_contactEmail() {
-		return(contact_email.getText());
+		return (contact_email.getText());
 	}
-	
+
 	public boolean get_header(String header) {
-		return((registerCustomer_page_header.getText()).contains(header));
+		return ((registerCustomer_page_header.getText()).contains(header));
 	}
 	////////////////////////////////////////////////////////////////////////
 }

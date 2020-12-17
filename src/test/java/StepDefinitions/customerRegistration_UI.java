@@ -42,9 +42,11 @@ public class customerRegistration_UI {
 		if (errormessages.contains(",")) {
 			String[] List_error = errormessages.split(",", 0);
 			for (int count = 0; count < List_error.length; count++) {
+				System.out.println(List_error[count]);
 				custReg_steps_object.error_message_validation(List_error[count]);
 			}
 		} else {
+			System.out.println(errormessages);
 			custReg_steps_object.error_message_validation(errormessages);
 		}
 	}
