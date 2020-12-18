@@ -208,7 +208,6 @@
 				<version>${serenity.maven.version}</version>
 
 				<dependencies>
-					<!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-single-page-report -->
 					<dependency>
 						<groupId>net.serenity-bdd</groupId>
 						<artifactId>serenity-single-page-report</artifactId>
@@ -217,7 +216,7 @@
 
 				</dependencies>
 				<configuration>
-					<!-- ><tags>${tags}</tags> -->
+				    <!-- ><tags>${tags}</tags> -->
 					<reports>single-page-html</reports>
 				</configuration>
 				<executions>
