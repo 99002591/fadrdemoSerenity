@@ -52,13 +52,13 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
   Scenario Outline: Checking character length limits of input fields
     Given User Navigates to customer registration 
      When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "vladimir@putin" "phone"
-     Then Check the length of accepted input "<value>"
+     Then Check the length of accepted input "<field>"
   
     Examples: 
-      | Test Description                        | customer_name        | contact_name        | contact_phone     | 
-      | Customer name is more than 256 chars    | break_limit_customer | Jeff                | 1234567890        | 
-      | Contact name is more than 256 chars     | Elon                 | break_limit_contact | 1234567890        | 
-      | Contact phone no. is more than 16 chars | Elon                 | Jeff                | break_limit_phone | 
+      | Test Description                        | customer_name        | contact_name        | contact_phone     | field         |
+      | Customer name is more than 256 chars    | break_limit_customer | Jeff                | 1234567890        | customer_name |
+      | Contact name is more than 256 chars     | Elon                 | break_limit_contact | 1234567890        | contact_name  |
+      | Contact phone no. is more than 16 chars | Elon                 | Jeff                | break_limit_phone | phone_number  |
       
   @BrowserAction
   Scenario: Reset button

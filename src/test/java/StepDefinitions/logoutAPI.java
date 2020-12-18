@@ -11,7 +11,7 @@ public class logoutAPI {
 	@Steps
 	static logoutAPI_steps logoutAPI_steps_object;
 
-	static commonAssertions commonAssertions_object = new commonAssertions();
+	static commonStepDef commonAssertions_object = new commonStepDef();
 	static ValidatableResponse response_all;
 
 	@When("DELETE request on Logout API")

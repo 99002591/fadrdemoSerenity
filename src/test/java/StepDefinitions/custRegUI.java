@@ -1,6 +1,6 @@
 package StepDefinitions;
 
-import StepsSerenity.customerRegsitration_steps_UI;
+import StepsSerenity.custRegUI_steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,11 +8,11 @@ import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import pages.commonPage;
 
-public class customerRegistration_UI {
+public class custRegUI {
 	static commonPage commonpage_object;
 
 	@Steps
-	static customerRegsitration_steps_UI custReg_steps_object;
+	static custRegUI_steps custReg_steps_object;
 
 	@Given("^Navigated to customer registration$")
 	public void customer_registration_page_opens() {
@@ -62,6 +62,21 @@ public class customerRegistration_UI {
 	@And("^Click on submit button$")
 	public void click_on_submit_button() {
 		custReg_steps_object.submit();
+	}
+
+	@Then("^Check the length of accepted input \"([^\"]*)\"$")
+	public void check_the_length_of_accepted_input_something(String field) {
+		custReg_steps_object.too_long_validation(field);
+	}
+
+	@Then("^All input fields should reset$")
+	public void all_input_fields_should_reset() {
+		custReg_steps_object.all_fields_reset();
+	}
+
+	@And("^User clicks the reset button$")
+	public void user_clicks_the_reset_button(){
+		custReg_steps_object.reset();
 	}
 
 }

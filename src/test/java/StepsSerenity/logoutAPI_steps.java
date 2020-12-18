@@ -8,7 +8,7 @@ import utils.fileReader;
 
 public class logoutAPI_steps {
 	@Steps
-	common_steps common_steps_object;
+	commonSteps common_steps_object;
 	
 	static String logoff_endpoint = "security/logoff/";
 	

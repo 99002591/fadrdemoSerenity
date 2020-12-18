@@ -9,7 +9,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 
 @CucumberOptions(
-        features = "src/test/resources/features/customerRegistrationUI.feature",
+        features = "src/test/resources/features/",
         glue= "StepDefinitions",
         monochrome = true,
         plugin = "html:target/automationreport.html")

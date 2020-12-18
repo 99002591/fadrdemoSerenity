@@ -12,7 +12,7 @@ public class loginAPI {
 	@Steps
 	static loginAPI_steps login_actions;
 
-	static commonAssertions commonAssertions_object = new commonAssertions();
+	static commonStepDef commonStepDef_object = new commonStepDef();
 	static ValidatableResponse response_all;
 
 	@Given("^Prepare Request Body for Login API with email = \"([^\"]*)\" and password = \"([^\"]*)\"$")
@@ -23,7 +23,7 @@ public class loginAPI {
 	@When("^POST request on Login API$")
 	public void post_request_on_login_api() {
 		response_all = login_actions.post_request_to_endpoint();
-		commonAssertions_object.set_response_all(response_all);
+		commonStepDef_object.set_response_all(response_all);
 	}
 
 }

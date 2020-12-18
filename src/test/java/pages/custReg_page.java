@@ -151,23 +151,41 @@ public class custReg_page extends PageObject {
 
 	////////////// DATA RETRIEVING FROM TEXT FIELDS ///////////////
 	public String get_customerName() {
-		return (customer_name.getText());
+		System.out.println(customer_name);
+		return (customer_name.getValue());
 	}
 
 	public String get_contactName() {
-		return (contact_name.getText());
+		return (contact_name.getValue());
 	}
 
 	public String get_contactPhone() {
-		return (contact_phone.getText());
+		return (contact_phone.getValue());
 	}
 
 	public String get_contactEmail() {
-		return (contact_email.getText());
+		return (contact_email.getValue());
 	}
 
 	public boolean get_header(String header) {
 		return ((registerCustomer_page_header.getText()).contains(header));
+	}
+	
+	public int get_all_fields_text() {
+		int total_length = get_customerName().length() + get_contactName().length() + get_contactPhone().length() + get_contactEmail().length();
+		return(total_length);
+	}
+	
+	public int get_customerName_length() {
+		return(get_customerName().length());
+	}
+	
+	public int get_contactName_length() {
+		return(get_contactName().length());
+	}
+	
+	public int get_contactPhone_length() {
+		return(get_contactPhone().length());
 	}
 	////////////////////////////////////////////////////////////////////////
 }

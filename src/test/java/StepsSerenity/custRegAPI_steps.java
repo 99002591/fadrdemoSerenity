@@ -11,7 +11,7 @@ public class custRegAPI_steps {
 
 	@Steps
 	loginAPI_steps loginAPI_steps;
-	common_steps common_steps_objects = new common_steps();
+	commonSteps common_steps_objects = new commonSteps();
 	
 	static custRegPOJO pojo_custReg = new custRegPOJO();
 	static fileReader fileReader_object = new fileReader();
