@@ -21,6 +21,6 @@ jobs:
       - name: Download chrome
         run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - name: Install Chrome
-        run: dpkg -i google-chrome-stable_current_amd64.deb
+        run: sudo dpkg -i google-chrome-stable_current_amd64.deb
       - name: Run tests with Maven
         run: mvn clean verify serenity:aggregate
