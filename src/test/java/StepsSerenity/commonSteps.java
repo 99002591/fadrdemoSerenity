@@ -44,6 +44,7 @@ public class commonSteps {
 	
 	@Step
 	public void error_validation(String errormessage){
+		System.out.println(errormessage);
 		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));	
 	}
 	

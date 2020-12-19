@@ -20,7 +20,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
 	Then Validation of error message "<error_message>"
 	
 	Examples: 
-		| Test Description                      | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_messages                                                                                                                     | 
+		| Test Description                      | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_message                                                                                                                      | 
 		| Registration with blank customer name |               | Vladimir     | 9999999999    | vladimir@putin.com | email          | Customer name is required                                                                                                          | 
 		| Registration with blank contact name  | Jeff          |              | 9999999999    | joe@biden.com      | phone          | Contact name is required                                                                                                           | 
 		| Registration with blank phone number  | Bernard       | Boris        |               | boris@jhonson.com  | other          | Phone number is required                                                                                                           | 
@@ -36,7 +36,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
      Then Validation of error message "<error_message>"
   
     Examples: 
-      | Test Description                               | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_messages                  |  
+      | Test Description                               | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_message                   |  
       | Registration with alphanumberic phone number   | Jeff          | Joe          | qwerty382324  | joe@biden.com      | phone          | Please enter valid phone number | 
       | Registration with phone number with space      | Jeff          | Joe          | 91 566382324  | joe@biden.com      | phone          | Please enter valid phone number |
       | Registration with phone with special character | Jeff          | Joe          | #91245678954  | joe@biden.com      | phone          | Please enter valid phone number |
@@ -46,7 +46,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
     Given User Navigates to customer registration 
      When Enter "Elon" "Vladimir" "123456789" "vladimir@putin" "phone" 
      Then Submit button is disabled 
-     Then Validation of error message "<error_message>"
+     Then Validation of error message "Please enter a valid email"
      
   @BroswerAction
   Scenario Outline: Checking character length limits of input fields

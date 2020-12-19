@@ -19,6 +19,7 @@ public class commonPage extends PageObject {
 	/////////////////// ERROR RETRIEVE METHODS ///////////////////////////
 	public boolean getResultTitles(String errormessage) {
 		List<String> all_error_msgs = error_msg.stream().map(element -> element.getText()).collect(Collectors.toList());
+		System.out.println(all_error_msgs);
 		if (all_error_msgs.contains(errormessage)) {
 			return true;
 		} else {
