@@ -17,7 +17,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
    Given User Navigates to customer registration 
 	When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "<contact_email>" "<contact_method>" 
 	Then Submit button is disabled 
-	Then Submission fails with "<error_messages>" 
+	Then Validation of error message "<error_message>"
 	
 	Examples: 
 		| Test Description                      | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_messages                                                                                                                     | 
@@ -33,7 +33,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
     Given User Navigates to customer registration 
      When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "<contact_email>" "<contact_method>" 
      Then Submit button is disabled 
-     Then Submission fails with "<error_messages>" 
+     Then Validation of error message "<error_message>"
   
     Examples: 
       | Test Description                               | customer_name | contact_name | contact_phone | contact_email      | contact_method | error_messages                  |  
@@ -46,7 +46,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
     Given User Navigates to customer registration 
      When Enter "Elon" "Vladimir" "123456789" "vladimir@putin" "phone" 
      Then Submit button is disabled 
-     Then Submission fails with "Please enter a valid email"  
+     Then Validation of error message "<error_message>"
      
   @BroswerAction
   Scenario Outline: Checking character length limits of input fields

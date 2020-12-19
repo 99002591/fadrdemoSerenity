@@ -20,7 +20,7 @@ Feature: Login with UI
     Given User navigates to login page 
      When Enter "<email>" and "<password>" 
       And User clicks Login button 
-     Then Login fails with error message "<error_message>" 
+     Then Validation of error message "<error_message>" 
   
     Examples: 
       | Description                             | email                        | password      | error_message                        | 
@@ -35,7 +35,7 @@ Feature: Login with UI
      When Enter "<email>" and "<password>" 
       And User clicks Login button
      Then Login button is disabled
-     Then Login fails with error message "<error_message>" 
+     Then Validation of error message "<error_message>" 
   
     Examples: 
       | Description                         | email                        | password  | error_message                           | 

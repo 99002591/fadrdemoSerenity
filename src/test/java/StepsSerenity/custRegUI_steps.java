@@ -11,7 +11,7 @@ import utils.fileReader;
 public class custRegUI_steps {
 
 	static custReg_page custReg_pageObj;
-	static commonPage common_pageObj;
+	static commonPage commonpage_object;
 	static fileReader f_read = new fileReader();
 	
 	@Step
@@ -69,10 +69,10 @@ public class custRegUI_steps {
 		assertThat(custReg_pageObj.get_header("Register Customer"), equalTo(true));
 	}
 	
-	@Step
-	public void error_message_validation(String errormessage) {
-		assertThat(common_pageObj.getResultTitles(errormessage), equalTo(true));
-	}
+//	@Step
+//	public void error_message_validation(String errormessage) {
+//		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));
+//	}
 	
 	@Step
 	public void too_long_validation(String field) {

@@ -1,9 +1,13 @@
 package StepsSerenity;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import pages.commonPage;
 import utils.fileReader;
 
 public class commonSteps {
@@ -13,6 +17,7 @@ public class commonSteps {
 	@Steps
 	static loginAPI_steps loginAPI_steps;
 
+	static commonPage commonpage_object;
 	static fileReader fileReader_object = new fileReader();
 	static ValidatableResponse response_all;
 	static String auth, id;
@@ -35,6 +40,11 @@ public class commonSteps {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Step
+	public void error_validation(String errormessage){
+		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));	
 	}
 	
 	@Step

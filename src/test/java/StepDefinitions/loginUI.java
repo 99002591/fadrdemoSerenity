@@ -3,6 +3,7 @@ package StepDefinitions;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+import StepsSerenity.commonSteps;
 import StepsSerenity.loginUI_steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,6 +15,7 @@ public class loginUI {
 
 	@Steps
 	static loginUI_steps loginUI_steps_object;
+	static commonSteps commonSteps_object;
 
 	@When("^Eye button is clicked \"([^\"]*)\"$")
 	public void eye_button_is_clicked(String times) {
@@ -34,17 +36,17 @@ public class loginUI {
 		loginUI_steps_object.eaton_support_link_open();
 	}
 
-	@Then("^Login fails with error message \"([^\"]*)\"$")
-	public void login_fails_with_error_message_something(String errormessage) {
-		if (errormessage.contains(",")) {
-			String[] List_error = errormessage.split(",", 0);
-			for (int count = 0; count < List_error.length; count++) {
-				loginUI_steps_object.login_fail_validation(List_error[count]);
-			}
-		} else {
-			loginUI_steps_object.login_fail_validation(errormessage);
-		}
-	}
+//	@Then("^Login fails with error message \"([^\"]*)\"$")
+//	public void login_fails_with_error_message_something(String errormessage) {
+//		if (errormessage.contains(",")) {
+//			String[] List_error = errormessage.split(",", 0);
+//			for (int count = 0; count < List_error.length; count++) {
+//				commonSteps_object.error_validation(List_error[count]);
+//			}
+//		} else {
+//			commonSteps_object.error_validation(errormessage);
+//		}
+//	}
 
 	@Then("^Login button is disabled$")
 	public void login_button_is_disabled() {

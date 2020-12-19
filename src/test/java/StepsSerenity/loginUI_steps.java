@@ -61,10 +61,10 @@ public class loginUI_steps {
 		assertThat(loginpage_object.find_the_password_visibility(), equalTo(visibility));
 	}
 	
-	@Step
-	public void login_fail_validation(String errormessage){
-		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));	
-	}
+//	@Step
+//	public void login_fail_validation(String errormessage){
+//		assertThat(commonpage_object.getResultTitles(errormessage), equalTo(true));	
+//	}
 	
 	@Step
 	public void back_from_forgot_password() {

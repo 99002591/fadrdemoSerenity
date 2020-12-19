@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import StepsSerenity.commonSteps;
 import StepsSerenity.custRegUI_steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,6 +14,7 @@ public class custRegUI {
 
 	@Steps
 	static custRegUI_steps custReg_steps_object;
+	static commonSteps commonSteps_object;
 
 	@Given("^Navigated to customer registration$")
 	public void customer_registration_page_opens() {
@@ -37,17 +39,17 @@ public class custRegUI {
 		custReg_steps_object.state_check_of_submit();
 	}
 
-	@Then("^Submission fails with \"([^\"]*)\"$")
-	public void submission_fails_with_error(String errormessages) {
-		if (errormessages.contains(",")) {
-			String[] List_error = errormessages.split(",", 0);
-			for (int count = 0; count < List_error.length; count++) {
-				custReg_steps_object.error_message_validation(List_error[count]);
-			}
-		} else {
-			custReg_steps_object.error_message_validation(errormessages);
-		}
-	}
+//	@Then("^Submission fails with \"([^\"]*)\"$")
+//	public void submission_fails_with_error(String errormessages) {
+//		if (errormessages.contains(",")) {
+//			String[] List_error = errormessages.split(",", 0);
+//			for (int count = 0; count < List_error.length; count++) {
+//				commonSteps_object.error_validation(List_error[count]);
+//			}
+//		} else {
+//			commonSteps_object.error_validation(errormessages);
+//		}
+//	}
 
 	@And("^User clicks on factory reset dropdown$")
 	public void user_clicks_on_factory_reset_dropdown() {

@@ -13,6 +13,8 @@ import io.restassured.response.ValidatableResponse;
 import net.thucydides.core.annotations.Steps;
 
 public class commonStepDef {
+	@Steps
+	static commonSteps commonSteps_object;
     ////////////////////////////////////////////////////////////////////////////////////////////// 
 	////////////////////////////////      ASSERTIONS FOR API     /////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +59,18 @@ public class commonStepDef {
     public void response_message_returned_something(String message) {
 		assertThat(response_all.extract().jsonPath().getString("message"), equalTo(message));
     }
+	
+	@Then("^Validation of error message \"([^\"]*)\"$")
+	public void login_fails_with_error_message_something(String errormessage) {
+		if (errormessage.contains(",")) {
+			String[] List_error = errormessage.split(",", 0);
+			for (int count = 0; count < List_error.length; count++) {
+				commonSteps_object.error_validation(List_error[count]);
+			}
+		} else {
+			commonSteps_object.error_validation(errormessage);
+		}
+	}
 	//////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////
 	
