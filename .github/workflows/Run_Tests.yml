@@ -17,13 +17,10 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Install chromedriver
-        uses: nanasess/setup-chromedriver@master
-        with: 
-          chromedriver-version: '86.0.4240.22'
-      - name: Start chrome
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+        run: apt-get install chromium-chromedriver
+      - name: Download chrome
+        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - name: Install Chrome
+        run: dpkg -i google-chrome-stable_current_amd64.deb
       - name: Run tests with Maven
         run: mvn clean verify serenity:aggregate
