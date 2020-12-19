@@ -17,7 +17,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Install chromedriver
-        run: apt-get install chromium-chromedriver
+        run: sudo apt-get install chromium-chromedriver
       - name: Download chrome
         run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - name: Install Chrome
