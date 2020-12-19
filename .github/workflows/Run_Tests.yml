@@ -19,7 +19,7 @@ jobs:
       - name: Install chromedriver
         uses: nanasess/setup-chromedriver@master
         with: 
-          chromedriver-version: '77.0.3865.40'
+          chromedriver-version: '86.0.4240.22'
       - name: Start chrome
         run: |
           export DISPLAY=:99
