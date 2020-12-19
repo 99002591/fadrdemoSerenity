@@ -62,16 +62,19 @@ public class logoutAPI_steps {
 	}
 
 	//////////////////////////////// BAD REQUESTS ///////////////////////////////////
+	@Step
 	public ValidatableResponse delete_request_invalid_userID(String auth_token, String userid) {
 		return (SerenityRest.given().auth().oauth2(auth_token).when()
 				.delete(logoff_endpoint + userid).then());
 	}
-
+	
+	@Step
 	public ValidatableResponse delete_request_blank_userID(String auth_token, String userid) {
 		return (SerenityRest.given().auth().oauth2(auth_token).when()
 				.delete(logoff_endpoint + userid).then());
 	}
-
+	
+	@Step
 	public ValidatableResponse delete_request_valid_userID(String auth_token, String userid) {
 		return (SerenityRest.given().auth().oauth2(auth_token).when()
 				.delete(logoff_endpoint + userid).then());

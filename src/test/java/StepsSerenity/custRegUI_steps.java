@@ -2,6 +2,8 @@ package StepsSerenity;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+
+import net.thucydides.core.annotations.Step;
 import pages.commonPage;
 import pages.custReg_page;
 import utils.fileReader;
@@ -11,48 +13,14 @@ public class custRegUI_steps {
 	static custReg_page custReg_pageObj;
 	static commonPage common_pageObj;
 	static fileReader f_read = new fileReader();
-
+	
+	@Step
 	public void open_custReg_page() {
 		custReg_pageObj.open();
 	}
-
+	
+	@Step
 	public void fill_test_details(String customername, String contactname, String contactphone, String contactemail, String contactmethod) {
-		String temporary = null;
-		if (customername.equals("break_limit_customer")) {
-			try {
-				temporary = f_read.readfile("name_too_long");
-				custReg_pageObj.click_customer_name();
-				custReg_pageObj.enter_customer_name(temporary);
-				custReg_pageObj.click_contact_name();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} 
-		
-		else if (contactname.equals("break_limit_contact")) {
-			try {
-				temporary = f_read.readfile("name_too_long");
-				custReg_pageObj.click_contact_name();
-				custReg_pageObj.enter_contact_name(temporary);
-				custReg_pageObj.click_contact_phone();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-		
-		else if (contactphone.equals("break_limit_phone")) {
-			try {
-				temporary = f_read.readfile("phonenumber_too_long");
-				custReg_pageObj.click_contact_phone();
-				custReg_pageObj.enter_contact_phone(temporary);
-				custReg_pageObj.click_contact_email();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} 
-		
-		else {
 			custReg_pageObj.click_customer_name();
 			custReg_pageObj.enter_customer_name(customername);
 			custReg_pageObj.click_contact_name();
@@ -64,41 +32,49 @@ public class custRegUI_steps {
 			custReg_pageObj.click_contact_method();
 			custReg_pageObj.choose_contact_method(contactmethod);
 			custReg_pageObj.click_additonal_info();
-		}
 	}
-
+	
+	@Step
 	public void state_check_of_submit() {
 		assertThat(custReg_pageObj.state_of_submit_button(), equalTo(true));
 	}
-
+	
+	@Step
 	public void click_dropdown() {
 		custReg_pageObj.click_factoryReset_dropdown();
 	}
-
+	
+	@Step
 	public void choose_customer_reg() {
 		custReg_pageObj.click_customer_registration();
 	}
-
+	
+	@Step
 	public void submit() {
 		custReg_pageObj.click_submit();
 	}
-
+	
+	@Step
 	public void reset() {
 		custReg_pageObj.click_reset();
 	}
-
+	
+	@Step
 	public void all_fields_reset() {
 		assertThat(custReg_pageObj.get_all_fields_text(), equalTo(0));
 	}
-
+	
+	@Step
 	public void check_if_custReg_page_open() {
 		assertThat(custReg_pageObj.get_header("Register Customer"), equalTo(true));
 	}
-
+	
+	@Step
 	public void error_message_validation(String errormessage) {
 		assertThat(common_pageObj.getResultTitles(errormessage), equalTo(true));
 	}
 	
+	@Step
 	public void too_long_validation(String field) {
 		if (field.equals("customer_name")) {
 			assertThat(custReg_pageObj.get_customerName_length(), equalTo(256));
