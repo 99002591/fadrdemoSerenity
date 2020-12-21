@@ -3,7 +3,7 @@
 #
 Feature: Customer Registration UI
 
-@BrowswerAction 
+@BrowserAction 
 Scenario: Navigate to Customer Registration page 
 	Given User navigates to login page 
 	When Enter "fadr_support_technician@eaton.com" and "Form7@22" 
@@ -28,7 +28,7 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
 		| Registration with no contact method   | Bill          | Narendra     | 9999999999    | narendra@modi.com  |                | Approved contact method is required                                                                                                | 
 		| Registration with all fields blank    |               |              |               |                    |                | Customer name is required,Contact name is required,Phone number is required,E-mail is required,Approved contact method is required | 
 		
-  @BroswerAction
+  @BrowserAction
   Scenario Outline: Unsuccessful Customer Registration with invalid phone number
     Given User Navigates to customer registration 
      When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "<contact_email>" "<contact_method>" 
@@ -41,14 +41,14 @@ Scenario Outline: Unsuccessful Customer Registration with input fields left blan
       | Registration with phone number with space      | Jeff          | Joe          | 91 566382324  | joe@biden.com      | phone          | Please enter valid phone number |
       | Registration with phone with special character | Jeff          | Joe          | #91245678954  | joe@biden.com      | phone          | Please enter valid phone number |
   
-  @BroswerAction
+  @BrowserAction
   Scenario: Unsuccessful Customer Registration with invalid email ID
     Given User Navigates to customer registration 
      When Enter "Elon" "Vladimir" "123456789" "vladimir@putin" "phone" 
      Then Submit button is disabled 
      Then Validation of error message "Please enter a valid email"
      
-  @BroswerAction
+  @BrowserAction
   Scenario Outline: Checking character length limits of input fields
     Given User Navigates to customer registration 
      When Enter "<customer_name>" "<contact_name>" "<contact_phone>" "vladimir@putin" "phone"
