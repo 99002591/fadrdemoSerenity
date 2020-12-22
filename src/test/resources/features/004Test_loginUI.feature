@@ -3,7 +3,7 @@
 #
 Feature: Login with UI 
 
-  @UI
+@UI
   Scenario: Login with correct credentials
     Given User navigates to login page
      When Enter "fadr_support_technician@eaton.com" and "Form7@22"
