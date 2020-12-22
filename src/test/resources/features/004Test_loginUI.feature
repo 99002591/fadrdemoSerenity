@@ -10,10 +10,7 @@ Feature: Login with UI
       And User clicks Login button
      Then Login successful with user redirected to dashboard
      Then Logout
-  
-#    Examples: 
-#      | Category of user | email                             | password | 
-#      | Eaton Technician | fadr_support_technician@eaton.com | Form7@22 | 
+
 
 @UI 
   Scenario Outline: Login with incorrect credentials. 
