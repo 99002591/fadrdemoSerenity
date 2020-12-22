@@ -16,13 +16,5 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Install chromedriver
-        run: sudo apt-get install chromium-chromedriver
-      - name: Download chrome
-        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - name: Install Chrome
-        run: |
-             sudo dpkg -i google-chrome-stable_current_amd64.deb
-             chrome --version
-      - name: Run tests with Maven
-        run: mvn clean verify serenity:aggregate
+      - name: Run API tests with Maven
+        run: mvn clean verify -Dcucumber.filter.tags="@API" serenity:aggregate
