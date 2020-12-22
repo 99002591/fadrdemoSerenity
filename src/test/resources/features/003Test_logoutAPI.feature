@@ -1,7 +1,7 @@
 #Author Amit Das
 Feature: API validation for use of Logout API 
 #
-  @API_SECURITY
+  @API @API_SECURITY
   Scenario Outline: Validate Logout API successfully 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API 
@@ -12,7 +12,7 @@ Feature: API validation for use of Logout API
       | status_code | message            | 
       | 200         | Log off successful | 
   
-  @API_SECURITY
+  @API @API_SECURITY
   Scenario Outline: Validate Logout API Unsuccessfully for Invalid authentication 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API with invalid scene "<auth_type>" "<user_id_type>" 
@@ -26,7 +26,7 @@ Feature: API validation for use of Logout API
       | Logout with blank userID   | invalid   | invalid      | 400         | 9010       | Please enter valid GUID | 
       | Logout with valid userID   | invalid   | blank        | 404         |            |                         | 
   
-  @API_SECURITY
+  @API @API_SECURITY
   Scenario Outline: Validate Logout API Unsuccessfully for Blank Authentication 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API with invalid scene "<auth_type>" "<user_id_type>" 
@@ -40,7 +40,7 @@ Feature: API validation for use of Logout API
       | Logout with blank userID   | blank     | invalid      | 401         | 9009       | Security token must not be null or empty | 
       | Logout with valid userID   | blank     | blank        | 404         |            |                                          | 
   
-  @API_SECURITY
+  @API @API_SECURITY
   Scenario Outline: Validate Logout API Unsuccessfully for Expired Authentication 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API with invalid scene "<auth_type>" "<user_id_type>" 
@@ -54,7 +54,7 @@ Feature: API validation for use of Logout API
       | Logout with blank userID   | expired   | invalid      | 400         | 9010       | Please enter valid GUID | 
       | Logout with valid userID   | expired   | blank        | 404         |            |                         | 
   
-  @API_SECURITY
+  @API @API_SECURITY
   Scenario Outline: Validate Logout API Unsuccessfully for Valid Authentication 
     Given Login successfully and generate authorisation token 
      When DELETE request on Logout API with invalid scene "<auth_type>" "<user_id_type>" 
