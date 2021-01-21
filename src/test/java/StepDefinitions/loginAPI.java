@@ -24,6 +24,7 @@ public class loginAPI {
 	public void post_request_on_login_api() {
 		response_all = login_actions.post_request_to_endpoint();
 		commonStepDef_object.set_response_all(response_all);
+		System.out.println((response_all.extract().jsonPath().getString("errorDescription")));
 	}
 
 }
